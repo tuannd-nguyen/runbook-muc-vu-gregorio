@@ -1,0 +1,2037 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Runbook Mục Vụ Grêgôriô (Mở rộng) — Regula Pastoralis III</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --burgundy:#5e1a24;
+    --burgundy-dark:#43121a;
+    --burgundy-soft:#7d2a36;
+    --gold:#b08d3a;
+    --gold-bright:#caa64f;
+    --gold-pale:#e4d5a8;
+    --gold-deep:#8a6d24;
+    --olive:#5d6b3a;
+    --olive-soft:#76824a;
+    --violet:#4a3a5e;
+    --violet-soft:#6a557f;
+    --rose:#9c4a44;
+    --cream:#f6efe1;
+    --cream-deep:#efe5d0;
+    --parchment:#faf5ea;
+    --ink:#2a2017;
+    --ink-soft:#4a3d2e;
+    --rule:#d8c9a0;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+
+  body{
+    margin:0;
+    background:radial-gradient(ellipse at top, #efe3c9 0%, #e7d8b5 60%, #ddc9a0 100%);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:"EB Garamond", Georgia, "Times New Roman", serif;
+    font-size:19px;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+
+  body::before{
+    content:"";
+    position:fixed; inset:0; pointer-events:none;
+    background-image:repeating-linear-gradient(0deg, rgba(94,26,36,0.012) 0 2px, transparent 2px 4px);
+    z-index:0;
+  }
+
+  /* ===== READING PROGRESS ===== */
+  #progress{
+    position:fixed; top:0; left:0; height:3px; width:0%;
+    background:linear-gradient(90deg, var(--gold), var(--gold-bright), var(--burgundy));
+    z-index:1000; transition:width .12s linear;
+    box-shadow:0 0 8px rgba(176,141,58,0.5);
+  }
+
+  .wrap{ max-width:940px; margin:0 auto; position:relative; z-index:1; }
+
+  /* ===== HERO ===== */
+  .hero{ text-align:center; padding:90px 24px 60px; position:relative; }
+  .cross{
+    font-family:"Cinzel", serif; color:var(--gold); letter-spacing:0.4em;
+    font-size:26px; margin-bottom:32px; text-shadow:0 1px 0 rgba(255,255,255,0.4);
+  }
+  .hero .pretitle{
+    font-family:"Cinzel", serif; text-transform:uppercase; letter-spacing:0.32em;
+    color:var(--burgundy); font-size:13px; font-weight:600; margin-bottom:22px;
+  }
+  .hero h1{
+    font-family:"Cormorant Garamond", serif; font-weight:600;
+    font-size:clamp(38px, 6.5vw, 64px); line-height:1.05;
+    color:var(--burgundy-dark); margin:0 0 8px; letter-spacing:0.005em;
+  }
+  .hero .ext{
+    display:inline-block; font-family:"Cinzel", serif; font-size:11px;
+    letter-spacing:0.28em; text-transform:uppercase; color:var(--gold-deep);
+    background:rgba(176,141,58,0.12); border:1px solid var(--gold);
+    padding:5px 16px; border-radius:2px; margin-top:6px; font-weight:600;
+  }
+  .hero .subtitle{
+    font-family:"EB Garamond", serif; font-style:italic;
+    font-size:clamp(18px, 2.3vw, 22px); color:var(--ink-soft);
+    max-width:660px; margin:26px auto 30px; line-height:1.5;
+  }
+
+  .ornament{
+    display:flex; align-items:center; justify-content:center; gap:18px;
+    color:var(--gold); margin:26px auto; font-size:18px;
+  }
+  .ornament .line{ height:1px; width:90px; background:linear-gradient(90deg, transparent, var(--gold), transparent); }
+
+  .epigraph{
+    background:rgba(255,250,235,0.55);
+    border:1px solid var(--rule); border-left:3px solid var(--burgundy); border-right:3px solid var(--burgundy);
+    padding:32px 40px; margin:40px auto; max-width:680px;
+    font-style:italic; color:var(--ink-soft); font-size:20px; line-height:1.7;
+    position:relative; box-shadow:0 6px 30px rgba(67,18,26,0.08);
+  }
+  .epigraph .latin{
+    font-family:"Cormorant Garamond", serif; color:var(--burgundy);
+    font-style:italic; font-size:21px; display:block; margin-bottom:10px; font-weight:500;
+  }
+  .epigraph .attrib{
+    display:block; font-size:13px; font-style:normal; color:var(--gold);
+    letter-spacing:0.1em; text-transform:uppercase; margin-top:14px; font-family:"Cinzel", serif;
+  }
+
+  /* ===== SECTION TITLES ===== */
+  section{ padding:0 24px; }
+
+  h2.part{
+    font-family:"Cormorant Garamond", serif; font-weight:600;
+    font-size:clamp(28px, 4vw, 36px); color:var(--burgundy-dark);
+    text-align:center; margin:80px auto 12px; padding-top:48px;
+    position:relative; scroll-margin-top:20px;
+  }
+  h2.part .partnum{
+    display:block; font-family:"Cinzel", serif; font-size:12px;
+    letter-spacing:0.4em; color:var(--gold); text-transform:uppercase;
+    margin-bottom:12px; font-weight:600;
+  }
+  h2.part::after{
+    content:""; display:block; width:60px; height:2px;
+    background:var(--gold); margin:18px auto 0;
+  }
+
+  .part-note{
+    text-align:center; font-style:italic; color:var(--ink-soft);
+    max-width:640px; margin:0 auto 44px; font-size:18px;
+  }
+
+  .block-title{
+    font-family:"Cormorant Garamond", serif; font-weight:600;
+    color:var(--burgundy-dark); text-align:center; font-size:clamp(26px,3.6vw,32px);
+    margin:64px 0 8px; padding-top:36px; scroll-margin-top:20px;
+  }
+  .block-title .kicker{
+    display:block; font-family:"Cinzel", serif; font-size:11px;
+    letter-spacing:0.4em; color:var(--gold); text-transform:uppercase;
+    margin-bottom:10px; font-weight:600;
+  }
+
+  /* ===== HOW TO USE ===== */
+  .howto{
+    background:rgba(255,252,243,0.7); border:1px solid var(--rule);
+    border-radius:4px; padding:36px 42px; margin:30px 0;
+    box-shadow:0 4px 24px rgba(67,18,26,0.06);
+  }
+  .howto h3{
+    font-family:"Cormorant Garamond", serif; color:var(--burgundy);
+    font-size:24px; margin:0 0 16px; font-weight:600;
+  }
+  .howto ol{ padding-left:22px; margin:0; }
+  .howto li{ margin-bottom:10px; }
+  .howto p{ margin:0 0 14px; }
+  .howto ul{ padding-left:22px; margin:0; }
+  .howto ul li{ margin-bottom:10px; font-size:18px; }
+  .howto strong{ color:var(--burgundy-dark); }
+
+  .layers-note{
+    background:linear-gradient(180deg, rgba(74,58,94,0.05), rgba(74,58,94,0.02));
+    border-left:3px solid var(--violet-soft); padding:22px 26px; margin:18px 0;
+    border-radius:0 4px 4px 0;
+  }
+  .layers-note .ln-label{
+    font-family:"Cinzel", serif; font-size:11px; letter-spacing:0.2em;
+    text-transform:uppercase; color:var(--violet-soft); font-weight:600; margin-bottom:8px;
+  }
+  .legend{ display:flex; flex-wrap:wrap; gap:14px 22px; margin:20px 0 4px; }
+  .legend .sw{
+    display:inline-flex; align-items:center; gap:9px; font-size:15px;
+    font-family:"Cinzel", serif; letter-spacing:0.06em; color:var(--ink-soft);
+  }
+  .legend .chip{ width:14px; height:14px; border-radius:3px; flex:none; }
+  .chip-greg{ background:var(--burgundy); }
+  .chip-team{ background:var(--gold-deep); }
+  .chip-eg{ background:var(--olive); }
+  .chip-suy{ background:var(--violet); }
+  .chip-xet{ background:var(--rose); }
+
+  /* ===== QUICK TABLE ===== */
+  .table-scroll{ overflow-x:auto; margin:26px 0; }
+  table.quick{
+    width:100%; border-collapse:collapse; background:rgba(255,252,243,0.7);
+    font-size:17px; box-shadow:0 4px 24px rgba(67,18,26,0.06);
+  }
+  table.quick th{
+    background:var(--burgundy); color:var(--gold-pale); font-family:"Cinzel", serif;
+    font-weight:500; letter-spacing:0.08em; text-transform:uppercase; font-size:12px;
+    padding:14px 18px; text-align:left; border:1px solid var(--burgundy-dark);
+  }
+  table.quick td{ padding:12px 18px; border:1px solid var(--rule); color:var(--ink); }
+  table.quick tr:nth-child(even) td{ background:rgba(247,238,218,0.5); }
+  table.quick td.refs{
+    font-family:"Cormorant Garamond", serif; color:var(--burgundy);
+    font-weight:600; white-space:nowrap; letter-spacing:0.03em;
+  }
+  table.quick td a{ color:inherit; text-decoration:none; }
+  table.quick td a:hover{ text-decoration:underline; }
+
+  /* ===== PAIR CARDS ===== */
+  .pairs{ margin-top:40px; }
+
+  .pair{
+    background:rgba(255,253,247,0.82);
+    border:1px solid var(--rule); border-radius:3px;
+    margin:0 0 30px; padding:0;
+    box-shadow:0 3px 18px rgba(67,18,26,0.06);
+    overflow:hidden; position:relative; scroll-margin-top:20px;
+  }
+  .pair-head{
+    background:linear-gradient(180deg, var(--burgundy) 0%, var(--burgundy-dark) 100%);
+    color:var(--gold-pale); padding:20px 30px 18px;
+    display:flex; align-items:baseline; gap:18px; flex-wrap:wrap;
+    border-bottom:3px double var(--gold);
+  }
+  .pair-num{
+    font-family:"Cinzel", serif; font-weight:700; font-size:13px;
+    letter-spacing:0.22em; text-transform:uppercase; color:var(--gold-bright); white-space:nowrap;
+  }
+  .pair-title{
+    font-family:"Cormorant Garamond", serif; font-weight:600;
+    font-size:clamp(21px,2.6vw,26px); color:#f5ead0; line-height:1.22; margin:0; flex:1;
+  }
+  .pair-latin{
+    font-family:"EB Garamond", serif; font-style:italic;
+    color:var(--gold-pale); opacity:0.85; font-size:16px; white-space:nowrap;
+  }
+
+  .pair-body{ padding:24px 30px 18px; }
+
+  /* ===== LAYERS ===== */
+  .layer{ margin:0 0 20px; }
+  .layer-label{
+    font-family:"Cinzel", serif; font-size:11px; letter-spacing:0.22em;
+    text-transform:uppercase; font-weight:600; margin-bottom:9px;
+    display:flex; align-items:center; gap:9px;
+  }
+  .layer-label .ico{ width:15px; height:15px; flex:none; }
+  .layer-label .bar{ width:4px; height:15px; border-radius:1px; flex:none; }
+
+  .layer p{ margin:0; font-size:18px; line-height:1.72; }
+
+  .layer-greg .layer-label{ color:var(--burgundy); }
+  .layer-greg .layer-label .bar{ background:var(--burgundy); }
+  .layer-greg p{ color:var(--ink); }
+  .layer-greg{ padding-bottom:18px; border-bottom:1px dotted var(--rule); }
+
+  .layer-team{
+    background:rgba(176,141,58,0.07); border-left:3px solid var(--gold-deep);
+    padding:16px 20px; border-radius:0 4px 4px 0;
+  }
+  .layer-team .layer-label{ color:var(--gold-deep); }
+  .layer-team .layer-label .bar{ background:var(--gold-deep); }
+
+  .layer-eg{
+    background:rgba(93,107,58,0.07); border-left:3px solid var(--olive);
+    padding:16px 20px; border-radius:0 4px 4px 0;
+  }
+  .layer-eg .layer-label{ color:var(--olive); }
+  .layer-eg .layer-label .bar{ background:var(--olive); }
+  .layer-eg p{ font-style:italic; }
+
+  .layer-suy{
+    background:rgba(74,58,94,0.06); border-left:3px solid var(--violet);
+    padding:16px 20px; border-radius:0 4px 4px 0;
+  }
+  .layer-suy .layer-label{ color:var(--violet); }
+  .layer-suy .layer-label .bar{ background:var(--violet); }
+
+  /* Xét mình callout */
+  .examen{
+    margin-top:18px; padding:14px 18px 14px 20px;
+    background:linear-gradient(90deg, rgba(156,74,68,0.10), rgba(156,74,68,0.03));
+    border-left:3px solid var(--rose); border-radius:0 4px 4px 0;
+    display:flex; gap:12px; align-items:flex-start;
+  }
+  .examen .ex-mark{
+    font-family:"Cinzel", serif; color:var(--rose); font-size:16px;
+    line-height:1.5; flex:none; margin-top:1px;
+  }
+  .examen .ex-body{ flex:1; }
+  .examen .ex-label{
+    font-family:"Cinzel", serif; font-size:11px; letter-spacing:0.22em;
+    text-transform:uppercase; font-weight:600; color:var(--rose); display:block; margin-bottom:3px;
+  }
+  .examen p{ margin:0; font-style:italic; color:var(--ink); font-size:17.5px; line-height:1.65; }
+
+  em.lat{ color:var(--burgundy-soft); font-weight:500; }
+
+  /* ===== APPENDIX ===== */
+  .appendix{
+    background:rgba(255,253,247,0.7); border:1px solid var(--rule);
+    border-left:4px solid var(--gold); border-radius:3px;
+    padding:28px 34px; margin:22px 0;
+    box-shadow:0 3px 16px rgba(67,18,26,0.05); scroll-margin-top:20px;
+  }
+  .appendix .code{
+    font-family:"Cinzel", serif; font-size:12px; color:var(--gold);
+    letter-spacing:0.15em; text-transform:uppercase; display:block; margin-bottom:6px; font-weight:600;
+  }
+  .appendix h3{
+    font-family:"Cormorant Garamond", serif; color:var(--burgundy-dark);
+    font-size:23px; margin:0 0 14px; font-weight:600;
+  }
+  .appendix > p{ margin:0 0 14px; }
+  .appendix .arrow{
+    font-style:italic; color:var(--ink-soft);
+    border-top:1px dashed var(--rule); padding-top:14px; margin-top:6px;
+  }
+  .appendix .arrow::before{ content:"→ "; color:var(--gold); font-style:normal; font-weight:700; }
+
+  /* ===== CLOSING / PRAYER ===== */
+  .closing{ text-align:center; padding:60px 24px 30px; }
+  .lectio-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
+    margin:36px 0; text-align:left;
+  }
+  .lectio-grid > div{
+    background:rgba(255,253,247,0.7); border:1px solid var(--rule);
+    border-top:3px solid var(--burgundy); padding:26px 24px; border-radius:3px;
+  }
+  .lectio-grid h4{
+    font-family:"Cinzel", serif; font-size:12px; letter-spacing:0.16em;
+    text-transform:uppercase; color:var(--burgundy); margin:0 0 12px; font-weight:600; text-align:center;
+  }
+  .lectio-grid p{ margin:0; font-size:17px; }
+
+  .prayer{
+    background:linear-gradient(180deg, var(--burgundy) 0%, var(--burgundy-dark) 100%);
+    color:var(--gold-pale); padding:44px 46px; margin:40px auto; max-width:760px;
+    border-radius:4px; box-shadow:0 10px 40px rgba(67,18,26,0.25);
+    border:1px solid var(--gold); font-style:italic; font-family:"EB Garamond", serif;
+    font-size:20px; line-height:1.8; text-align:center; position:relative;
+  }
+  .prayer .amen{
+    font-family:"Cinzel", serif; font-style:normal; color:var(--gold-bright);
+    letter-spacing:0.2em; display:block; margin-top:18px; font-size:16px;
+  }
+  .prayer-label{
+    font-family:"Cinzel", serif; font-style:normal; color:var(--gold-bright);
+    letter-spacing:0.24em; text-transform:uppercase; font-size:12px; display:block; margin-bottom:18px; font-weight:600;
+  }
+
+  .colophon{
+    text-align:center; font-style:italic; color:var(--ink-soft);
+    font-size:16px; padding:30px 24px 40px; max-width:640px; margin:0 auto; line-height:1.7;
+  }
+  .colophon .amdg{
+    display:block; font-family:"Cinzel", serif; color:var(--gold);
+    font-style:normal; letter-spacing:0.18em; margin-top:14px; font-size:13px; font-weight:600;
+  }
+
+  .dropcap::first-letter{
+    font-family:"Cormorant Garamond", serif; float:left;
+    font-size:62px; line-height:0.85; padding:6px 12px 0 0;
+    color:var(--burgundy); font-weight:600;
+  }
+
+  ::selection{ background:var(--gold); color:#fff; }
+
+  /* ===== TOC / NAV ===== */
+  #toc-btn{
+    position:fixed; bottom:26px; right:26px; z-index:900;
+    width:54px; height:54px; border-radius:50%;
+    background:linear-gradient(180deg, var(--burgundy), var(--burgundy-dark));
+    color:var(--gold-bright); border:1px solid var(--gold);
+    font-family:"Cinzel", serif; font-size:20px; cursor:pointer;
+    box-shadow:0 6px 22px rgba(67,18,26,0.35);
+    display:flex; align-items:center; justify-content:center;
+    transition:transform .2s;
+  }
+  #toc-btn:hover{ transform:translateY(-2px); }
+
+  #top-btn{
+    position:fixed; bottom:88px; right:30px; z-index:900;
+    width:42px; height:42px; border-radius:50%;
+    background:rgba(176,141,58,0.92); color:#fff; border:1px solid var(--gold);
+    font-size:16px; cursor:pointer; box-shadow:0 4px 14px rgba(67,18,26,0.25);
+    display:none; align-items:center; justify-content:center; opacity:0; transition:opacity .2s;
+  }
+  #top-btn.show{ display:flex; opacity:1; }
+
+  #toc-overlay{
+    position:fixed; inset:0; background:rgba(42,32,23,0.5); z-index:950;
+    opacity:0; pointer-events:none; transition:opacity .25s;
+  }
+  #toc-overlay.open{ opacity:1; pointer-events:auto; }
+
+  #toc-panel{
+    position:fixed; top:0; right:0; height:100%; width:min(380px, 86vw); z-index:960;
+    background:linear-gradient(180deg, #faf5ea, #f1e7d2);
+    border-left:1px solid var(--gold); box-shadow:-10px 0 40px rgba(67,18,26,0.25);
+    transform:translateX(100%); transition:transform .3s cubic-bezier(.2,.7,.3,1);
+    overflow-y:auto; padding:30px 28px 60px;
+  }
+  #toc-panel.open{ transform:translateX(0); }
+  #toc-panel .toc-close{
+    position:absolute; top:18px; right:20px; background:none; border:none;
+    font-size:26px; color:var(--burgundy); cursor:pointer; line-height:1;
+  }
+  #toc-panel h3{
+    font-family:"Cormorant Garamond", serif; color:var(--burgundy-dark);
+    font-size:24px; margin:6px 0 4px; font-weight:600;
+  }
+  #toc-panel .toc-sub{
+    font-family:"Cinzel", serif; font-size:11px; letter-spacing:0.24em;
+    text-transform:uppercase; color:var(--gold); margin-bottom:18px; font-weight:600;
+  }
+  #toc-panel .toc-group{ margin-bottom:16px; }
+  #toc-panel .toc-group-h{
+    font-family:"Cinzel", serif; font-size:11px; letter-spacing:0.18em;
+    text-transform:uppercase; color:var(--violet-soft); font-weight:600;
+    margin:0 0 6px; padding-bottom:4px; border-bottom:1px solid var(--rule);
+  }
+  #toc-panel a{
+    display:block; text-decoration:none; color:var(--ink-soft);
+    font-size:15.5px; padding:4px 0 4px 10px; border-left:2px solid transparent;
+    line-height:1.45; transition:all .15s;
+  }
+  #toc-panel a:hover, #toc-panel a.active{
+    color:var(--burgundy); border-left-color:var(--gold); background:rgba(176,141,58,0.07);
+  }
+  #toc-panel a .n{
+    font-family:"Cinzel", serif; font-size:12px; color:var(--gold-deep);
+    margin-right:8px; font-weight:600;
+  }
+
+  @media (max-width:680px){
+    body{ font-size:18px; }
+    .hero{ padding:60px 18px 40px; }
+    .pair-head{ padding:18px 20px; }
+    .pair-body{ padding:20px 18px 14px; }
+    .howto{ padding:26px 22px; }
+    .appendix{ padding:24px 22px; }
+    .lectio-grid{ grid-template-columns:1fr; }
+    .layer-team,.layer-eg,.layer-suy{ padding:14px 16px; }
+    #toc-btn{ bottom:18px; right:18px; }
+    #top-btn{ bottom:78px; right:22px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- ============ TOC PANEL ============ -->
+<div id="toc-overlay"></div>
+<aside id="toc-panel" aria-label="Mục lục">
+  <button class="toc-close" aria-label="Đóng">✕</button>
+  <h3>Mục lục</h3>
+  <div class="toc-sub">36 cặp · Phụ lục · Lời nguyện</div>
+
+  <div class="toc-group">
+    <div class="toc-group-h">Mở đầu</div>
+    <a href="#howto"><span class="n">0</span>Cách dùng tài liệu</a>
+    <a href="#quick"><span class="n">✦</span>Bảng tra nhanh tình huống</a>
+  </div>
+
+  <div class="toc-group">
+    <div class="toc-group-h">Phần I — Hoàn cảnh sống</div>
+    <a href="#p1"><span class="n">I</span>Giới thiệu phần</a>
+    <a href="#c1"><span class="n">1</span>Nam giới và nữ giới</a>
+    <a href="#c2"><span class="n">2</span>Người trẻ và người già</a>
+    <a href="#c3"><span class="n">3</span>Người nghèo và người giàu</a>
+    <a href="#c4"><span class="n">4</span>Người vui và người buồn</a>
+    <a href="#c5"><span class="n">5</span>Bề dưới và bề trên</a>
+    <a href="#c6"><span class="n">6</span>Tôi tớ và chủ nhân</a>
+    <a href="#c7"><span class="n">7</span>Khôn ngoan thế gian / chậm hiểu</a>
+  </div>
+
+  <div class="toc-group">
+    <div class="toc-group-h">Phần II — Tính khí và nết người</div>
+    <a href="#p2"><span class="n">II</span>Giới thiệu phần</a>
+    <a href="#c8"><span class="n">8</span>Trơ trẽn và rụt rè</a>
+    <a href="#c9"><span class="n">9</span>Tự phụ và nhát đảm</a>
+    <a href="#c10"><span class="n">10</span>Thiếu kiên nhẫn và kiên nhẫn</a>
+    <a href="#c11"><span class="n">11</span>Tốt bụng và ghen tị</a>
+    <a href="#c12"><span class="n">12</span>Chân thật và giả dối</a>
+    <a href="#c13"><span class="n">13</span>Khỏe và bệnh</a>
+    <a href="#c14"><span class="n">14</span>Sống lành vì sợ / chai lì</a>
+    <a href="#c15"><span class="n">15</span>Quá thinh lặng / nói nhiều</a>
+    <a href="#c16"><span class="n">16</span>Lười biếng và hấp tấp</a>
+    <a href="#c17"><span class="n">17</span>Hiền lành và nóng giận</a>
+    <a href="#c18"><span class="n">18</span>Khiêm nhường và kiêu căng</a>
+    <a href="#c19"><span class="n">19</span>Cố chấp và dao động</a>
+    <a href="#c20"><span class="n">20</span>Mê ăn uống / kiêng khem</a>
+  </div>
+
+  <div class="toc-group">
+    <div class="toc-group-h">Phần III — Của cải, hòa bình, lời nói</div>
+    <a href="#p3"><span class="n">III</span>Giới thiệu phần</a>
+    <a href="#c21"><span class="n">21</span>Rộng rãi cho / chiếm đoạt</a>
+    <a href="#c22"><span class="n">22</span>Trung lập / vừa cho vừa chiếm</a>
+    <a href="#c23"><span class="n">23</span>Bất hòa và hòa thuận</a>
+    <a href="#c24"><span class="n">24</span>Gieo bất hòa / kiến tạo hòa</a>
+    <a href="#c25"><span class="n">25</span>Hiểu sai tự tin / hiểu đúng kiêu</a>
+    <a href="#c26"><span class="n">26</span>Có khả năng dạy sợ / non mà lao</a>
+  </div>
+
+  <div class="toc-group">
+    <div class="toc-group-h">Phần IV — Hoàn cảnh lịch sử cá nhân</div>
+    <a href="#p4"><span class="n">IV</span>Giới thiệu phần</a>
+    <a href="#c27"><span class="n">27</span>Thịnh vượng / nghịch cảnh</a>
+    <a href="#c28"><span class="n">28</span>Kết hôn và độc thân</a>
+    <a href="#c29"><span class="n">29</span>Từng sa ngã / được gìn giữ</a>
+  </div>
+
+  <div class="toc-group">
+    <div class="toc-group-h">Phần V — Giải phẫu lỗi lầm và hoán cải</div>
+    <a href="#p5"><span class="n">V</span>Giới thiệu phần</a>
+    <a href="#c30"><span class="n">30</span>Khóc tội hành động / tư tưởng</a>
+    <a href="#c31"><span class="n">31</span>Khóc không chừa / chừa không khóc</a>
+    <a href="#c32"><span class="n">32</span>Khoe điều xấu / chê mà làm</a>
+    <a href="#c33"><span class="n">33</span>Bốc đồng / có chủ ý</a>
+    <a href="#c34"><span class="n">34</span>Lỗi nhỏ thường / sụp lớn bất ngờ</a>
+    <a href="#c35"><span class="n">35</span>Không khởi sự / không hoàn thành</a>
+    <a href="#c36"><span class="n">36</span>Giấu xấu phô tốt / giấu tốt chịu tiếng</a>
+  </div>
+
+  <div class="toc-group">
+    <div class="toc-group-h">Khép & Lời nguyện</div>
+    <a href="#appa"><span class="n">A</span>Ba nguyên tắc khép Quyển III</a>
+    <a href="#appb"><span class="n">B</span>Chốt an toàn Quyển IV</a>
+    <a href="#end"><span class="n">✠</span>Lectio · Xét mình · Lời nguyện</a>
+  </div>
+</aside>
+
+<button id="toc-btn" aria-label="Mở mục lục">☰</button>
+<button id="top-btn" aria-label="Lên đầu trang">↑</button>
+
+<div class="wrap">
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="cross">✠</div>
+    <div class="pretitle">Regula Pastoralis · Quyển III</div>
+    <h1>Runbook Mục Vụ Grêgôriô</h1>
+    <span class="ext">Phiên bản mở rộng · Ví dụ &amp; Suy tư</span>
+    <p class="subtitle">36 cặp người nghe của Quyển III, <em>Regula Pastoralis</em> (Quy Luật Mục Vụ) — áp dụng cho 1:1, code review và retro.</p>
+
+    <div class="ornament"><span class="line"></span>✦<span class="line"></span></div>
+
+    <div class="epigraph">
+      <span class="latin">“Pro qualitate audientium formari debet sermo doctorum”</span>
+      Lời của người dạy phải được uốn nắn theo phẩm chất của người nghe <em>(Quyển III, Lời mở đầu)</em>.
+      <span class="attrib">Lời mở đầu Quyển III</span>
+    </div>
+
+    <p class="subtitle">Tâm hồn người nghe như những dây đàn <em class="lat">cithara</em> (đàn dây cổ) căng ở độ khác nhau: nghệ nhân gảy mỗi dây một cách khác để tạo nên một bản nhạc hài hòa. Một lực gảy duy nhất sẽ làm dây này câm, dây kia đứt.</p>
+  </header>
+
+  <!-- ============ HOW TO USE ============ -->
+  <section id="howto">
+    <h2 class="block-title"><span class="kicker">0 · Cách dùng</span>CÁCH DÙNG TÀI LIỆU NÀY</h2>
+
+    <div class="howto">
+      <h3>“60 giây Grêgôriô” trước mỗi 1:1 / review / retro</h3>
+      <ol>
+        <li><em>Người này là dây đàn nào?</em> — Tra bảng nhanh bên dưới, tìm cặp gần nhất.</li>
+        <li><em>Điều họ cần nghe khác gì điều tôi đang muốn nói?</em> — Đọc lời khuyên của Grêgôriô cho vế tương ứng.</li>
+        <li>Sau cuộc nói chuyện: một dòng xét mình theo Quyển IV (Phụ lục B).</li>
+      </ol>
+
+      <h3>Lưu ý nền tảng <span style="font-size:14px;color:var(--ink-soft);font-style:italic">(đọc một lần, nhớ mãi)</span></h3>
+      <ul>
+        <li>Mỗi cặp gồm <strong>hai vế đối nghịch</strong> — chẩn đoán sai vế là kê sai thuốc. Lời chữa người nhát đảm sẽ nuôi bệnh người tự phụ, và ngược lại.</li>
+        <li>Grêgôriô viết cho mục tử các linh hồn; phần “Trong team” là <strong>loại suy</strong> (<em class="lat">analogia</em> — phép loại suy) tôi đề xuất cho đời kỹ sư, không phải bản văn gốc. Anh chịu trách nhiệm thật về sự trưởng thành và phẩm giá của đồng nghiệp trong phạm vi công việc — nhưng không thay thế trách nhiệm mục tử về linh hồn.</li>
+        <li>Quyển III chỉ an toàn khi đứng giữa Quyển II (đời sống nội tâm người lãnh đạo) và Quyển IV (trở về xét mình). Kỹ thuật lời nói tách khỏi đời sống là thao túng.</li>
+      </ul>
+
+      <div class="layers-note">
+        <div class="ln-label">✦ Về hai lớp mở rộng (Ví dụ / Suy tư)</div>
+        <p style="margin:0">Mỗi cặp giờ có thêm hai lớp. <strong>Ví dụ</strong> đưa một cảnh cụ thể — thường là “ngã ba chẩn đoán”: cùng một tình huống, hai người khác tạng, hai đáp ứng đúng ngược nhau. <strong>Suy tư</strong> đào nền thần học sâu hơn (giáo phụ, Thánh Tôma, I-Nhã, Cassian, Augustinô), chỉ rõ ranh giới sai lạc, <strong>đánh dấu nơi loại suy kỹ thuật gãy</strong> so với thực tại mục vụ, và khép bằng một câu xét mình. Hai lớp này là <em class="lat">sapientia pastoralis</em> (khôn ngoan mục vụ) được áp dụng, không phải giáo huấn định tín — chúng mời gọi phân định, không buộc lương tâm.</p>
+      </div>
+
+      <div class="legend">
+        <span class="sw"><span class="chip chip-greg"></span>Grêgôriô khuyên</span>
+        <span class="sw"><span class="chip chip-team"></span>Trong team</span>
+        <span class="sw"><span class="chip chip-eg"></span>Ví dụ</span>
+        <span class="sw"><span class="chip chip-suy"></span>Suy tư</span>
+        <span class="sw"><span class="chip chip-xet"></span>Xét mình</span>
+      </div>
+
+      <h3>Về nguồn và cấp độ thẩm quyền</h3>
+      <ul>
+        <li><strong>Nguồn:</strong> <em>Regula Pastoralis</em> (Quy Luật Mục Vụ), Thánh Grêgôriô Cả (k. 590). Bản Latin: Migne, <em>Patrologia Latina</em> (Tuyển Tập Giáo Phụ Latinh) tập 77; bản tiếng Anh công cộng: NPNF Series II, vol. 12 (Barmby dịch, 1895); bản phê bình: Sources Chrétiennes 381–382.</li>
+        <li><strong>Đánh số:</strong> danh sách 36 cặp nằm ở chương 1 của Quyển III. Mỗi cặp mang số “Lời khuyên” (<em class="lat">admonitio</em>) 1–36; Lời khuyên 1–2 nằm ngay trong chương 1, từ Lời khuyên 3 trở đi mỗi lời khuyên chiếm một chương (Lời khuyên N ≈ chương N−1). Các ấn bản có thể đánh số hơi khác — khi cần trích chính xác, kiểm theo ấn bản cụ thể.</li>
+        <li><strong>Cấp độ:</strong> đây là <em class="lat">sapientia pastoralis</em> (khôn ngoan mục vụ) của một Tiến sĩ Hội Thánh — thẩm quyền của truyền thống được quý trọng 14 thế kỷ, <strong>không phải</strong> giáo huấn định tín; lời khuyên cụ thể không buộc lương tâm. Phần Kinh Thánh Grêgôriô trích thì thuộc Lời Chúa; cách ngài áp dụng thuộc khôn ngoan mục vụ.</li>
+        <li>Lời khuyên của Grêgôriô trong tài liệu này được <strong>tóm lược trung thành</strong>, không phải trích nguyên văn; vài câu Latin ngắn chỉ dùng khi đã kiểm chứng được.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ QUICK TABLE ============ -->
+  <section id="quick">
+    <h2 class="block-title"><span class="kicker">Tra nhanh</span>BẢNG TRA NHANH THEO TÌNH HUỐNG</h2>
+    <div class="table-scroll">
+      <table class="quick">
+        <thead>
+          <tr><th>Tình huống</th><th>Cặp liên quan</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1:1 với người mới / junior</td><td class="refs">2 · 3 · 9 · 26</td></tr>
+          <tr><td>Feedback cho người tự tin quá mức</td><td class="refs">8 · 9 · 18 · 25 · 32</td></tr>
+          <tr><td>Code review căng thẳng, giọng điệu</td><td class="refs">10 · 17 · 25</td></tr>
+          <tr><td>Retro sau incident / thất bại</td><td class="refs">4 · 30 · 31 · 33 · 34</td></tr>
+          <tr><td>Người im lặng trong meeting</td><td class="refs">8 · 9 · 15 · 26</td></tr>
+          <tr><td>Knowledge silo, giấu kiến thức</td><td class="refs">15 · 22</td></tr>
+          <tr><td>Mentoring và phát triển người khác</td><td class="refs">7 · 11 · 26 · 35</td></tr>
+          <tr><td>Gossip, chính trị công sở</td><td class="refs">12 · 23 · 24</td></tr>
+          <tr><td>Burnout, sức khỏe, nhịp độ</td><td class="refs">13 · 20 · 27</td></tr>
+          <tr><td>Trì hoãn, bỏ dở, thiếu chủ động</td><td class="refs">16 · 34 · 35</td></tr>
+          <tr><td>Xung đột giữa người / giữa team</td><td class="refs">5 · 6 · 10 · 23 · 24</td></tr>
+          <tr><td>Thăng tiến, thành công, ghen tị</td><td class="refs">3 · 11 · 18 · 27</td></tr>
+          <tr><td>Cân bằng công việc – gia đình</td><td class="refs">13 · 28</td></tr>
+          <tr><td>All-hands, thông điệp cho đám đông</td><td class="refs"><a href="#app-a1">Phụ lục A.1</a></td></tr>
+          <tr><td>Quá nhiều điều cần sửa cùng lúc</td><td class="refs"><a href="#app-a2">Phụ lục A.2</a></td></tr>
+          <tr><td>Onboarding, dạy người mới</td><td class="refs">7 · <a href="#app-a3">Phụ lục A.3</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="ornament"><span class="line"></span>✠<span class="line"></span></div>
+
+  <!-- ============ PART I ============ -->
+  <section id="p1">
+    <h2 class="part"><span class="partnum">Phần I · Cặp 1–7</span>HOÀN CẢNH SỐNG</h2>
+    <div class="pairs">
+
+      <article class="pair" id="c1">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 01</span>
+          <h3 class="pair-title">Nam giới và nữ giới</h3>
+          <span class="pair-latin">viri / feminae</span>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Nam giới cần những lời khuyên có trọng lượng nặng hơn, nữ giới những lời nhẹ nhàng hơn, mỗi bên theo tạng riêng của mình.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Nguyên tắc bền vững ở đây không phải khuôn mẫu giới — mà là: <strong>không có một template feedback cho mọi người</strong>. Mỗi người chịu được một “trọng lượng lời nói” khác nhau; nhiệm vụ của anh là đọc từng người, không đọc nhãn dán. Trước mỗi 1:1, hỏi: liều lượng nào người này tiếp nhận được mà không gãy?</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Cùng một câu — <em>“PR này anh gánh quá nhiều context trong đầu, cần tách nhỏ và viết ra.”</em> Nói với A (senior, tạng vững): anh gật, tách PR, xong. Nói với B (cũng senior, ngang tài, nhưng tạng nhạy): B im ba ngày, rồi nhắn <em>“hình như tôi không hợp với team này.”</em> Cùng một lực gảy — dây A ngân, dây B đứt. B không kém; độ căng của dây khác. Nghệ thuật không phải <strong>hạ chuẩn</strong> cho B, mà là <strong>cùng một sự thật, khác cách chạm</strong>: với B, mở đầu bằng <em>“tôi tin tay nghề anh, nên mới nói thẳng chỗ này.”</em></p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Đây là toàn bộ luận đề Quyển III thu nhỏ — <em class="lat">diversa diversis</em> (điều khác nhau cho những người khác nhau). Thánh Tôma dạy <em class="lat">prudentia</em> (đức khôn ngoan thực hành) là <em class="lat">recta ratio agibilium</em> (lẽ phải trong hành động) và nó luôn nhắm tới cái <strong>đơn nhất, cụ thể</strong> — không quy tắc phổ quát nào thay được việc đọc đúng con người trước mặt (ST II-II, q.47). Ranh giới sai lạc hai đầu: đọc “nhãn” thay vì đọc người là <em class="lat">acceptio personarum</em> (thiên vị theo hạng người) trá hình; nhưng dò xét vô tận, không dám nói gì vì sợ đọc sai, lại là <em class="lat">pusillanimitas</em> (nhát đảm). Chỗ loại suy gãy: tôi đang đọc độ nhạy <strong>nghề nghiệp</strong> của đồng nghiệp, <strong>không</strong> phải tình trạng linh hồn họ trước mặt Chúa — điều sau thuộc về họ và về Chúa, không thuộc quyền chẩn đoán của tôi.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Hôm nay tôi đã đọc người trước mặt, hay đọc cái nhãn tôi dán lên họ?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c2">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 02</span>
+          <h3 class="pair-title">Người trẻ và người già</h3>
+          <span class="pair-latin">iuvenes / senes</span>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Sự nghiêm khắc của lời khuyên dẫn người trẻ tới tiến bộ; với người cao niên, lời thỉnh cầu dịu dàng hướng họ tới điều tốt hơn — <em>“Đừng nặng lời với cụ già, nhưng hãy khuyên nhủ như cha”</em> (1 Tm 5,1).</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Junior cần feedback trực tiếp, có cấu trúc, có kỳ vọng rõ — sự mơ hồ mới là điều bất công với họ. Với kỹ sư kỳ cựu, sửa qua câu hỏi và lòng kính trọng kinh nghiệm: không nói “legacy code này tệ” mà hỏi “bối cảnh nào ngày đó dẫn đến thiết kế này?” — thường anh sẽ học được điều mình không ngờ.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Một junior gửi PR “dọn dẹp” module retry cũ, xóa đoạn <em class="lat">jittered backoff</em> (khoảng lùi ngẫu nhiên) vì “trông thừa.” Hai hướng cùng lúc: với junior, trực tiếp và có cấu trúc — <em>“đoạn này chặn thundering herd (đàn client retry đồng loạt làm sập service); đây là incident tháng 3/2021, đây là biểu đồ.”</em> Với kỹ sư kỳ cựu viết đoạn “xấu xí” đó năm xưa, không phán <em>“code này tệ”</em> mà hỏi <em>“hồi đó điều gì buộc anh làm thế này?”</em> — và anh nghe được một bài học chiến trường mà bản rewrite sạch sẽ kia đã suýt xóa mất.</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô mượn 1 Tm 5,1 — với cụ già, khuyên như cha. Nền sâu hơn là <em class="lat">reverentia</em> (lòng tôn kính) với <em class="lat">memoria</em> (ký ức) đã tích trong người đi trước — mà Thánh Tôma xếp <em class="lat">memoria</em> là phần thứ nhất của đức khôn ngoan (ST II-II, q.49): người khôn học từ quá khứ <strong>có thật</strong>, không từ quá khứ mình tưởng tượng. Điều răn thứ tư — thảo kính — nới rộng vào đời nghề: kính trọng kinh nghiệm không phải nịnh, mà là công bằng. Ranh giới: tôn kính người cũ <strong>không</strong> đồng nghĩa đóng băng cái cũ — có khi legacy thật sự sai, và dịu dàng không có nghĩa im lặng (x. Cặp 17).</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Khi tôi thấy một dòng code “ngu ngốc”, tôi giả định người trước tôi ngu — hay giả định họ có lý do tôi chưa thấy? <em class="lat">Hermeneutica caritatis</em> (lối giải thích bằng đức ái) áp cả cho quá khứ.</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c3">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 03</span>
+          <h3 class="pair-title">Người nghèo và người giàu</h3>
+          <span class="pair-latin">inopes / locupletes</span>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Với người nghèo khó, lời an ủi nâng đỡ trước cơn quẫn bách; với người giàu có, lời cảnh tỉnh trước kiêu căng — của cải là gánh trách nhiệm, không phải công trạng.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>“Nghèo” là người thiếu cơ hội: junior không ai mentor, team thiếu headcount, người vào nghề muộn — nâng đỡ và mở cửa trước khi đòi hỏi. “Giàu” là người hưởng nhiều đặc quyền: ngôi sao được ưu ái, người nắm hệ thống quan trọng — nhắc rằng đặc quyền là trách nhiệm được trao. Và soi chính mình: vị trí senior là một sự “giàu” cần canh chừng.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>“Nghèo” cụ thể: một bạn vào nghề muộn, chuyển ngành từ kế toán, giỏi nhưng không ai nhận mentor vì “tốn thời gian.” “Giàu” cụ thể: một ngôi sao nắm trọn hệ thống thanh toán, ai cũng nể, PR của cậu ấy không ai dám review kỹ. Với người “nghèo cơ hội”: mở cửa <strong>trước</strong> khi đòi hỏi — ghép mentor, giao một <em>starter task</em> có người đỡ. Với người “giàu đặc quyền”: chính vì không ai dám review, cậu ấy cần review kỹ <strong>nhất</strong> — đặc quyền không bị soi là đặc quyền nguy hiểm nhất.</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô lật ngược trực giác: của cải là <em class="lat">onus</em> (gánh nặng trách nhiệm), không phải <em class="lat">meritum</em> (công trạng). Thánh Augustinô gọi là <em class="lat">ordo amoris</em> (trật tự của lòng mến) — mọi sự tốt được trao là để quy hướng phục vụ, không để tích trữ làm chỗ dựa. Ở đây “giàu” nguy hiểm không vì tài nguyên mà vì <strong>được miễn kiểm tra</strong> — và linh hồn không bị ai chất vấn là linh hồn dễ trôi. Chỗ loại suy gãy: trong team, “nghèo–giàu” là cơ hội và đặc quyền nghề nghiệp; đừng dán nhãn này lên <strong>giá trị con người</strong>, càng không lên tình trạng ân sủng của họ.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>(sắc bén nhất Grêgôriô để lại): vị trí senior của chính tôi là một sự “giàu” cần canh chừng — tôi có đang tiêu đặc quyền “không ai dám cãi” của mình một cách công bằng không?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c4">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 04</span>
+          <h3 class="pair-title">Người vui và người buồn</h3>
+          <span class="pair-latin">laeti / tristes</span>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Trước mặt người vui, đặt điều đáng suy nghĩ nghiêm túc kẻo niềm vui thành phóng túng; trước mặt người buồn, đặt niềm vui được hứa ban kẻo nỗi buồn nuốt chửng họ. Ngài còn phân biệt buồn do hoàn cảnh và buồn do tạng người.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Sau launch thành công, đem pre-mortem và ôn rủi ro vào giữa cơn hưng phấn. Sau thất bại hoặc incident, <strong>mở đầu retro bằng hy vọng và điều học được</strong> — đừng mổ xẻ ngay khi vết thương còn mới. Và phân biệt: người này buồn vì sprint này, hay đây là tạng trầm cần đồng hành dài hạn?</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Thứ Sáu, launch lớn thành công, cả team hưng phấn, có người đã nói <em>“lần sau cứ thế mà làm.”</em> Đúng lúc đó — không phải lúc mở sâm-panh mãi — nhẹ nhàng cài một <em>pre-mortem</em> (mổ tử thi trước): <em>“nếu ba tháng nữa hệ này sập, khả năng cao vì đâu?”</em> Ngược lại, sau một <em>SEV1</em> (sự cố nghiêm trọng cấp 1) lúc 2 giờ sáng, mở retro <strong>không</strong> bằng <em>“ai đẩy cái commit đó”</em> mà bằng <em>“chúng ta còn đứng đây, đã học được gì, và không ai một mình chịu.”</em> Vết thương còn mới thì băng trước, mổ sau.</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô tinh tế phân biệt buồn <strong>do hoàn cảnh</strong> và buồn <strong>do tạng người</strong> — và đây là chỗ loại suy phải cúi đầu: một retro chữa được nỗi buồn-sprint, nhưng <em class="lat">tristitia</em> (nỗi buồn sâu, mà Cassian xếp vào tám <em class="lat">logismoi</em> — tám mối nghĩ xấu) hay khuynh hướng trầm cảm là chuyện của y khoa và đồng hành dài hạn, <strong>không</strong> phải việc của lead giải quyết bằng kỹ thuật quản lý. Biết chỗ dừng là một phần của đức ái. Về niềm vui: Grêgôriô cảnh báo niềm vui không được kiềm thành <em class="lat">dissolutio</em> (buông thả) — trong nghề, đó là lúc “mọi thứ chạy ngon” sinh tự mãn và bỏ quan sát.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Tôi có đang gảy cùng một điệu cho người vui lẫn người buồn, hay đọc đúng ai cần được ghìm lại, ai cần được nâng lên?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c5">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 05</span>
+          <h3 class="pair-title">Bề dưới và bề trên</h3>
+          <span class="pair-latin">subditi / praelati</span>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Bề dưới: đừng xét đoán hồ đồ đời sống bề trên, vâng phục trong điều ngay chính. Bề trên: đừng kiêu căng vì quyền, nhớ rằng quyền là để phục vụ và sẽ phải trả lẽ.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Khi IC phàn nàn về quyết định của management: dạy đọc thiện chí trước (<em class="lat">hermeneutica caritatis</em> — lối giải thích bằng đức ái) và dùng kênh phản hồi đúng, thay vì tòa án hành lang. Khi chính anh là lead: nhớ lời anh nặng ký gấp bội — một câu đùa của lead là một chỉ thị trong tai junior; một thoáng cau mày trong demo là một bản án.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Một IC nhắn riêng: <em>“quyết định chọn vendor này của sếp ngu thật sự.”</em> Không hùa, không dập: dạy đọc thiện chí trước — <em>“anh thử đoán ràng buộc nào mình chưa thấy khiến quyết định đó hợp lý?”</em> — rồi chỉ kênh đúng để phản hồi (RFC, 1:1 với sếp) thay vì tòa án hành lang. Chiều ngược, khi chính tôi là lead: một câu buột miệng trong standup — <em>“cái approach đó hơi ngây thơ”</em> — với tôi là nhận xét thoáng qua; với junior nghe được, đó là một <strong>bản án</strong> khắc vào trí nhớ sáu tháng.</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô nhắc quyền là <em class="lat">ad serviendum</em> (để phục vụ) và sẽ <em class="lat">reddere rationem</em> (phải trả lẽ). Đây là nơi Quyển III chạm Quyển II: người lãnh đạo phải cai quản mình trước khi cai quản người. Cân nặng bất đối xứng của lời không phải ẩn dụ — lời của người có quyền rơi vào tai người dưới với gia tốc gấp bội. Ranh giới rõ: loại suy này <strong>chỉ</strong> là quyền bính chức năng trong công việc; nó không phải <em class="lat">cura animarum</em> (việc chăm sóc linh hồn) — tôi không phải bề trên thiêng liêng của ai.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Hôm nay tôi có nói câu nào mà nếu đứng ở phía người-nghe-yếu-thế, tôi sẽ thấy nó nặng hơn tôi tưởng không?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c6">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 06</span>
+          <h3 class="pair-title">Tôi tớ và chủ nhân</h3>
+          <span class="pair-latin">servi / domini</span>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Tôi tớ: đừng khinh chủ trong lòng. Chủ nhân: nhớ mình bình đẳng về bản tính với tôi tớ — cùng là tôi tớ của một Chủ trên trời.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Mọi quan hệ bất đối xứng quyền lực: vendor–client, contractor–nhân viên, đội outsourcing. Đối xử với contractor bằng phẩm giá ngang nhân viên chính thức — bình đẳng bản tính đi trước hợp đồng. Khi phục vụ stakeholder khó tính: giữ lòng tôn trọng mà không quỵ lụy — phẩm giá của anh không tùy thuộc chức danh của họ.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Một contractor bị loại khỏi kênh Slack ăn mừng launch mà cậu ấy code phân nửa; và một vendor support bị kỹ sư team quát trong call vì downtime. Hai chỗ cùng một sai lầm: <strong>lẫn lộn hợp đồng với phẩm giá</strong>. Việc đúng: contractor được ghi tên trong phần credit như nhân viên; với vendor khó chịu, giữ được lịch-sự-cứng-rắn — nêu vấn đề gắt về <em>SLA</em> (cam kết mức dịch vụ) mà không hạ nhục con người ở đầu dây.</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô đặt nền tận gốc: chủ và tớ <strong>bình đẳng về bản tính</strong> — <em class="lat">aequales natura</em> — cùng là tôi tớ của một Chủ trên trời. Đây là hạt giống phẩm giá mà Học thuyết Xã hội Công Giáo sau này khai triển: <em>Laborem Exercens</em> (Về Lao Động Của Con Người, Gioan Phaolô II) dạy giá trị lao động đến <strong>từ chủ thể lao động</strong> — con người — chứ không từ loại việc hay loại hợp đồng. Ranh giới cấp độ: đây là giáo huấn luân lý <strong>chắc chắn</strong> về phẩm giá con người, không phải chỉ mẹo ứng xử — nó ở tầng cao hơn phần lớn runbook này.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Có ai trong “chuỗi cung ứng” quanh tôi mà tôi đang đối xử theo giá trị hợp đồng thay vì phẩm giá bản tính?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c7">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 07</span>
+          <h3 class="pair-title">Người khôn ngoan thế gian và người chậm hiểu</h3>
+          <span class="pair-latin">sapientes huius mundi / hebetes</span>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Người khôn ngoan thế gian: hãy biết “trở nên điên dại để được khôn ngoan thật” (x. 1 Cr 3,18) — họ thường được chinh phục bằng lý lẽ. Người chậm hiểu: dẫn bằng ví dụ cụ thể, gần gũi, hơn là lý luận trừu tượng.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Với architect xuất sắc: thuyết phục bằng luận cứ, thách thức trí tuệ, và cảnh báo sự khéo léo vị khéo léo — over-engineering là kiêu trí mặc áo kỹ thuật. Với người học chậm hơn: demo chạy được, pairing, ví dụ cụ thể — đừng ném whitepaper. Một bài giảng không hợp khổ người nghe là lỗi của người giảng, không phải người nghe.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Với một architect sắc sảo đang vẽ <em>service mesh</em> bảy tầng cho một hệ thống ba service: thách bằng chính lý lẽ — <em>“chi phí vận hành và độ khó on-call của bảy tầng, ta trả để đổi lấy gì cụ thể?”</em> Over-engineering là kiêu trí mặc áo kỹ thuật, và người khôn thế gian thường chỉ chịu thua trước lý lẽ sắc hơn. Với một bạn học chậm hơn về Kubernetes: đừng ném whitepaper — mở một buổi <em>pairing</em> (lập trình cặp), một demo chạy được, một ví dụ sờ được.</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô trích 1 Cr 3,18 — “trở nên điên dại để được khôn ngoan thật.” Với người “khôn thế gian”, cửa vào là <em class="lat">humilitas intellectus</em> (khiêm nhường của trí tuệ): thừa nhận cái mình chưa biết. Với người chậm, Thánh Tôma nhắc <em class="lat">docilitas</em> (tinh thần dễ dạy) là phần của khôn ngoan — nhưng docilitas là đức của <strong>người học</strong>; nhiệm vụ người dạy là <em class="lat">condescensio</em> (hạ mình xuống ngang tầm), như Ngôi Lời đã làm khi Nhập Thể — dạy bằng dụ ngôn, bằng điều sờ được. Ranh giới: đừng lẫn “chậm hiểu một công nghệ” với “kém giá trị” — tốc độ nắm bắt Kubernetes không đo lường con người.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Lần gần nhất ai đó “không hiểu,” tôi âm thầm nghĩ họ kém, hay tôi hỏi mình đã dạy sai khổ không?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ PART II ============ -->
+  <section id="p2">
+    <h2 class="part"><span class="partnum">Phần II · Cặp 8–20</span>TÍNH KHÍ VÀ NẾT NGƯỜI</h2>
+    <div class="pairs">
+
+      <article class="pair" id="c8">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 08</span>
+          <h3 class="pair-title">Người trơ trẽn và người rụt rè</h3>
+          <span class="pair-latin">impudentes / verecundi</span>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Người trơ trẽn chỉ tỉnh ngộ trước lời quở trách thẳng và mạnh; người rụt rè được sửa dạy tốt hơn bằng lời nhẹ nhàng — sự xấu hổ sẵn có trong họ đã thiêu đốt đủ rồi, lời nặng sẽ đè bẹp.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Người ship không cần review, bỏ qua mọi góp ý → feedback trực diện, có dữ kiện, không vòng vo. Người rụt rè mắc lỗi → sửa <strong>riêng tư, không bao giờ trước đám đông</strong>, liều nhẹ là đủ vì họ đã tự trách mình gấp mười lời anh nói.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Cùng lỗi “đẩy thẳng lên main không review.” Người A ship như thế lần thứ tư, cười khi bị nhắc, <em>“review chỉ làm chậm.”</em> → quở thẳng, có dữ kiện, có hệ quả: <em>“hai lần trong số đó gây rollback; từ nay bật branch protection.”</em> Người B mới, lần đầu, đã đỏ mặt tự trách trước cả khi tôi mở miệng. → kéo riêng, một câu nhẹ là đủ: <em>“lần sau mở PR nhé, có gì tôi review nhanh cho.”</em> Cùng một lỗi, hai liều thuốc <strong>ngược dấu</strong>.</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô dùng hình ảnh thầy thuốc — <em class="lat">medicus</em> — cùng một bệnh cần liều khác theo thể trạng; lời nặng đổ trên người đã tự xấu hổ là “mổ trên vết đã rách.” Đây là <em class="lat">correptio fraterna</em> (sửa lỗi huynh đệ) theo Mt 18,15: <strong>riêng tư trước đã</strong>. Ranh giới sai lạc: với người trơ, nhẹ tay thành đồng lõa; với người rụt rè, nặng tay thành tàn nhẫn — cùng một “công bằng” mà lệch liều là bất công.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Tôi đang chọn liều theo <strong>điều người này chịu được</strong>, hay theo cơn bực của tôi lúc đó?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c9">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 09</span>
+          <h3 class="pair-title">Người tự phụ và người nhát đảm</h3>
+          <span class="pair-latin">protervi / pusillanimes</span>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Người tự phụ tin mọi việc mình làm đều hay — phải giúp họ thấy điều họ tưởng là tốt thật ra gây hại. Người nhát đảm: <strong>nhắc đến điều tốt nơi họ trước</strong>, rồi mới sửa điều sai, kẻo họ sụp đổ trong tuyệt vọng.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Đây là gốc giáo phụ của “khen trước khi chê” — nhưng lưu ý: Grêgôriô kê đơn này <strong>riêng cho người nhát đảm</strong>. Feedback sandwich không phải công thức phổ quát: với người tự phụ, sandwich làm loãng thông điệp và họ chỉ nghe phần khen. Chẩn đoán trước, kê đơn sau.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Hai mentee, hai đơn thuốc ngược. Người tự phụ tin mọi PR mình là hay: đừng bọc đường — <em>“đoạn này gây N+1 query (truy vấn lặp N+1 lần), đây là lý do, sửa thế này”</em> — nói thẳng cái hại của điều họ tưởng tốt. Người nhát đảm, giỏi mà luôn nghĩ mình dở: nhắc <strong>điều tốt có thật</strong> trước — <em>“khả năng đọc log của anh trong incident hôm qua rất tốt”</em> — rồi mới sửa, kẻo họ sụp trong tuyệt vọng.</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Đây chính là gốc giáo phụ của “feedback sandwich” — nhưng Grêgôriô kê nó <strong>riêng cho người nhát đảm</strong>, không phổ quát hóa. Với người tự phụ, sandwich làm loãng và họ chỉ nghe phần khen. Thần học nền: <em class="lat">superbia</em> (kiêu ngạo) mù trước cái hại của chính mình; <em class="lat">pusillanimitas</em> (nhát đảm) mù trước cái tốt Chúa đã đặt nơi mình. Cả hai là méo mó của cùng một điều: <strong>nhìn sai về mình</strong>.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Tôi có đang dùng một “công thức feedback” cho mọi người, hay tôi thật sự chẩn đoán trước khi mở lời?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c10">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 10</span>
+          <h3 class="pair-title">Người thiếu kiên nhẫn và người kiên nhẫn</h3>
+          <span class="pair-latin">impatientes / patientes</span>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Người thiếu kiên nhẫn: cơn nóng vội phá hủy chính điều tốt đang xây và kéo theo điều mình sẽ hối tiếc. Người kiên nhẫn: canh chừng nỗi cay đắng nuốt vào trong — nhẫn bên ngoài mà nuôi hận trong lòng thì sự kiên nhẫn thành vỏ rỗng.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Người gắt gỏng giữa incident → chỉ cho thấy cơn nóng làm hỏng chính bản fix: người run tay không gõ đúng lệnh. Người “fine” mãi không phàn nàn → 1:1 hỏi thẳng cảm xúc thật; passive-aggressive trong comment review (“như đã nói lần thứ ba...”) là khói của đám cháy âm ỉ.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Giữa <em>SEV1</em>, một kỹ sư gắt <em>“ai làm cái này ngu vậy”</em> và tay run gõ sai lệnh rollback, kéo dài sự cố. → chỉ cho thấy: chính cơn nóng đang phá bản fix. Ở cực kia, một người “lúc nào cũng fine,” không bao giờ phàn nàn, nhưng comment review nhỏ giọt cay: <em>“như đã nói lần thứ ba…”</em> → đó là khói của đám cháy âm ỉ; 1:1 hỏi thẳng: <em>“thật sự anh đang thấy thế nào?”</em></p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô nhìn xa hơn vẻ ngoài: người “nhẫn” mà nuôi <em class="lat">rancor</em> (mối hận ngấm) thì sự kiên nhẫn chỉ là <strong>vỏ</strong>, và có khi nguy hơn cơn nóng lộ ra — vì nó không được xả, không được chữa. Thánh Tôma phân <em class="lat">ira</em> (cơn giận) có mặt lành (giận điều đáng giận) và mặt bệnh; bệnh không phải cảm xúc mà là để nó <strong>cai trị phán đoán</strong> — “trong cơn giận, điều sai trông như đúng.” Ranh giới: kiên nhẫn thật là nhân đức; kiên nhẫn giả là dồn nén — biết phân biệt là <em class="lat">discretio</em> (đức phân định) mà Cassian gọi là mẹ của mọi nhân đức.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Sự “bình tĩnh” của tôi hôm nay là bình an thật, hay một mối hận đang gói kín chờ ngày rò rỉ ra comment?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c11">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 11</span>
+          <h3 class="pair-title">Người tốt bụng và người ghen tị</h3>
+          <span class="pair-latin">benevoli / invidi</span>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Người có thiện chí: thiện chí suông chưa đủ — phải trở thành hành động giúp ích. Người ghen tị: lửa ghen đốt chính người ghen trước hết; nhờ đức ái, điều tốt của người khác trở thành của mình.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Người “tốt mà thụ động” — quý mến mọi người nhưng không mentor ai, không viết docs → biến thiện cảm thành việc làm có địa chỉ. Người ghen với đồng nghiệp được thăng chức → sức mạnh của teammate là tài sản chung: kỹ năng của họ nâng trần của cả team, trong đó có anh.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Người “tốt mà thụ động”: quý mến cả team, không làm mất lòng ai, nhưng chưa từng mentor ai, chưa viết một trang doc. → biến thiện cảm thành việc <strong>có địa chỉ</strong>: <em>“tuần này anh kèm bạn mới phần CI nhé.”</em> Người ghen: đồng nghiệp được thăng chức, cậu ấy bắt đầu tìm lỗi vặt trong mọi PR của người kia. → chỉ cho thấy: kỹ năng của teammate <strong>nâng trần của cả team</strong>, kể cả anh; lửa ghen đốt người ghen trước tiên.</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô định nghĩa lại thiện chí: <em class="lat">benevolentia</em> (thiện chí) suông chưa đủ — phải thành <em class="lat">beneficentia</em> (làm ơn có việc). Và ngài đưa ra một trong những câu chữa lành đẹp nhất Quyển III: nhờ đức ái, <strong>điều tốt của người khác trở thành của mình</strong> — <em class="lat">invidia</em> (ganh tị) tan khi tôi thật lòng coi thành công của anh là kho chung tôi cũng hưởng. Đây đúng là mầu nhiệm <em class="lat">communio</em> (hiệp thông): trong Thân Thể, chi thể này mạnh thì cả thân được lợi (1 Cr 12,26). Ranh giới: <em class="lat">invidia</em> — buồn vì cái tốt của người khác — là một trong bảy mối tội đầu; chớ nhầm nó với <em class="lat">aemulatio</em> lành (thi đua muốn nên tốt như người mình khâm phục).</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Khi teammate được khen, phản ứng đầu tiên trong lòng tôi là mừng chung — hay là một cái nhói tôi vội che?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c12">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 12</span>
+          <h3 class="pair-title">Người chân thật và người giả dối</h3>
+          <span class="pair-latin">simplices / insinceri</span>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Người đơn sơ chân thật: đáng khen vì sự thật, nhưng hãy học thêm sự khôn ngoan trong lời — “đơn sơ như bồ câu” phải đi với “khôn như rắn” (x. Mt 10,16). Người hai lòng: hãy thấy sự hai lòng là lao dịch nặng nề — sống phòng thủ, sợ bại lộ — trong khi sự đơn sơ là an nghỉ.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Người thẳng đến mức gây thương tích → sự thật cần đúng lúc, đúng liều, đúng cách; <em class="lat">veracitas</em> (tính chân thật) không miễn trừ <em class="lat">prudentia</em> (khôn ngoan thực hành). Người chính trị, nói khác trước mặt khác sau lưng → cho thấy duplicity là technical debt của tâm hồn: chi phí bảo trì cao và trước sau cũng fail audit.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Người thẳng đến mức gây thương tích: comment review <em>“code này sai cơ bản, ai học cũng biết.”</em> Đúng nội dung, sai cách — người nhận vứt cả thông điệp. → <em class="lat">veracitas</em> không miễn trừ <em class="lat">prudentia</em>: <em>“chỗ này sẽ lỗi khi input rỗng — thử case này xem?”</em> Người hai lòng: khen design trước mặt, chê sau lưng trong DM. → cho thấy sự hai lòng là <strong>technical debt của tâm hồn</strong>: chi phí bảo trì cao, và trước sau cũng fail audit khi hai phiên bản lời gặp nhau.</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô cân hai đầu: người đơn sơ học thêm <em class="lat">prudentia</em> (khôn như rắn, Mt 10,16), người hai lòng thấy sự hai lòng là <strong>lao dịch</strong> — sống phòng thủ, sợ bại lộ — trong khi đơn sơ là <em class="lat">requies</em> (an nghỉ). Thần học sâu: sự thật và đức ái không phải hai lực đối nghịch phải đánh đổi; trong Chúa Kitô chúng là một — <em class="lat">veritatem facientes in caritate</em> (Ep 4,15: sống theo sự thật trong đức ái). Tách rời chúng là dấu của sa ngã, không phải của khôn ngoan. Ranh giới: “khôn như rắn” <strong>không</strong> cho phép mưu mẹo — đó là <em class="lat">astutia</em> (khôn lỏi, sự tinh ranh xấu), tật giả của khôn ngoan mà Thánh Tôma cảnh báo.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Có phiên bản nào của tôi trước mặt người này khác phiên bản sau lưng họ không?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c13">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 13</span>
+          <h3 class="pair-title">Người khỏe và người bệnh</h3>
+          <span class="pair-latin">incolumes / aegri</span>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Người khỏe mạnh: dùng thời gian khỏe mạnh để làm điều lành — sức khỏe là vốn được trao, đừng phung phí mùa sung sức. Người đau bệnh: bệnh tật có thể là lò thanh luyện và kỷ luật của tình yêu Thiên Chúa, như nơi ông Gióp — kiên nhẫn trong thử thách sinh hoa trái.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Lúc sung sức, dồn năng lượng cho việc khó và giá trị nhất — đừng tiêu mùa khỏe vào việc vặt. Với đồng nghiệp burnout hoặc đau ốm: mùa giảm công suất có phẩm giá riêng — điều chỉnh tải mà không oán trách, không đo họ bằng thước của mùa khỏe. Với chính mình: sustainable pace là khôn ngoan, không phải yếu đuối.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Lúc sung sức: đừng tiêu mùa khỏe vào ticket vặt và họp vô nghĩa — dồn cho việc khó, giá trị nhất, việc chỉ mình làm được lúc này. Với đồng nghiệp đang burnout hoặc ốm: mùa giảm công suất <strong>có phẩm giá riêng</strong> — giảm tải mà không oán, không đo họ bằng thước của mùa khỏe; đừng nói <em>“hồi trước cậu làm nhanh hơn mà.”</em></p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô đọc bệnh tật qua ông Gióp: có thể là <em class="lat">disciplina</em> (kỷ luật thanh luyện) của tình yêu, không phải hình phạt. Đây là chỗ loại suy phải rất cẩn thận và <strong>gãy sớm</strong>: burnout của đồng nghiệp không phải “lò thanh luyện của Chúa” để tôi giảng — nó là vấn đề sức khỏe cần y khoa, nghỉ ngơi, và có khi thay đổi cấu trúc công việc; thần học về đau khổ là để <strong>người chịu</strong> tự do đón nhận, tuyệt đối không phải để người ngoài áp đặt hay giảm nhẹ trách nhiệm chăm sóc. Với chính tôi: <em>sustainable pace</em> (nhịp độ bền vững) là khôn ngoan quản lý <strong>vốn</strong> Chúa trao, không phải yếu đuối.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Tôi có đang phung phí “mùa khỏe” của mình vào việc vặt — và có đang lặng lẽ khinh người đang ở “mùa yếu” không?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c14">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 14</span>
+          <h3 class="pair-title">Người sống lành vì sợ phạt và người chai lì trước mọi sửa dạy</h3>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Người giữ mình vì sợ roi đòn: dẫn họ từ nỗi sợ nô lệ — <em class="lat">timor servilis</em> (sợ hãi kiểu nô lệ) — sang lòng mến yêu điều thiện vì chính nó. Người đã chai cứng đến mức roi đòn cũng không sửa được: cần phương dược mạnh hơn, và cần cả nước mắt cầu nguyện cho họ.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Người tuân thủ process chỉ vì sợ blame → nuôi động lực nội tại: giúp hiểu <strong>tại sao</strong> runbook tồn tại, ai được bảo vệ nhờ nó. Người trơ trước mọi feedback, incident lặp lại không đổi → đến lúc cần hệ quả leo thang có văn bản và quy trình chính thức; không phải mọi sửa dạy đều thấm bằng lời — đôi khi cấu trúc phải nói thay.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Người theo runbook chỉ vì sợ bị đổ lỗi khi incident: → chuyển động lực từ <em class="lat">timor servilis</em> (sợ hãi kiểu nô lệ) sang hiểu <strong>tại sao</strong> runbook tồn tại, ai được nó bảo vệ. Người trơ trước mọi feedback, incident lặp lại không đổi: → đến lúc cần hệ quả leo thang có văn bản; không phải mọi sửa dạy đều thấm bằng lời — đôi khi cấu trúc phải nói thay.</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô vẽ hành trình nội tâm mà thần học tu đức gọi tên: từ <em class="lat">timor servilis</em> (sợ vì hình phạt) lên <em class="lat">timor filialis</em> (sợ của người con — kính sợ vì yêu, sợ làm buồn lòng Cha). Cùng một hành vi đúng, hai động cơ khác nhau như đêm với ngày; sự trưởng thành thiêng liêng là hành trình <strong>đổi động cơ</strong>, không chỉ đổi hành vi. Ranh giới quản lý: với người đã chai (<em class="lat">obduratio cordis</em> — sự chai cứng của lòng), Grêgôriô thực tế đến bất ngờ — cần “phương dược mạnh hơn” và <strong>nước mắt cầu nguyện</strong>; trong team, đó là quy trình chính thức <strong>cộng với</strong> không bỏ rơi họ trong lòng.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Điều tốt tôi làm hôm nay, tôi làm vì sợ hậu quả, hay vì đã bắt đầu yêu chính điều tốt ấy?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c15">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 15</span>
+          <h3 class="pair-title">Người quá thinh lặng và người nói nhiều</h3>
+          <span class="pair-latin">nimis taciti / multiloquio vacantes</span>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Người quá thinh lặng: sự im lặng giữ lại món nợ là lời lẽ ra phải trao, và thường nuôi trong lòng những xét đoán riêng không ai kiểm chứng. Người nói nhiều — <em class="lat">multiloquium</em> (tật nói nhiều): từ lời nhàn rỗi trượt sang lời gây hại; phải canh “cổng miệng”.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Silo kiến thức: senior không viết docs đang giữ lại món nợ với team. Người im trong meeting nhưng phàn nàn ở hành lang → mời phán đoán của họ ra ánh sáng: “anh thấy gì mà chưa nói?”. Người chiếm sóng → cấu trúc lượt nói (round-robin, viết trước khi thảo luận) thay vì chỉ nhắc miệng.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Người quá thinh lặng: một senior không viết docs, giữ trọn context trong đầu — sự im lặng ấy đang <strong>giữ lại món nợ</strong> lời lẽ ra phải trao cho team; và thường nuôi những xét đoán riêng (<em>“team này không hiểu gì đâu”</em>) không ai kiểm chứng. Người nói nhiều chiếm sóng mọi meeting: → cấu trúc lượt nói (round-robin, viết trước rồi thảo luận) thay vì chỉ nhắc miệng <em>“để người khác nói với.”</em></p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô canh “cổng miệng” — <em class="lat">custodia oris</em> — nơi lời nhàn rỗi (<em class="lat">verba otiosa</em>, x. Mt 12,36) trượt dần sang lời gây hại. Nhưng ngài cân đối tuyệt đẹp: <strong>im lặng cũng là một cách mắc nợ</strong> — người có lời chữa lành mà giữ lại thì “sự im lặng của họ là tội của họ.” Cassian nối sự lặng lẽ với nguy cơ nuôi <em class="lat">iudicium temerarium</em> (xét đoán hồ đồ) trong bóng tối nội tâm. Ranh giới: thinh lặng chiêm niệm (<em class="lat">silentium</em> của truyền thống Biển Đức) là vàng — nhưng khác hẳn thinh-lặng-trốn-trách-nhiệm; phân biệt hai thứ là <em class="lat">discretio</em>.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Có “món nợ lời” nào — một góp ý, một trang doc, một lời khích lệ — tôi đang giữ trong két mà lẽ ra phải trao?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c16">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 16</span>
+          <h3 class="pair-title">Người lười biếng và người hấp tấp</h3>
+          <span class="pair-latin">pigri / praecipites</span>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Người trì trệ: cho thấy <strong>điều tốt họ đang đánh mất</strong> vì chậm trễ — điều lành hoãn lại thường chết già trong ngăn kéo. Người hấp tấp: cho thấy điều tốt <strong>bị hỏng vì làm non</strong> — quả hái xanh thì chua.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Người né migration mãi → đặt trước mặt chi phí của việc không-làm: mỗi quý trì hoãn là bao nhiêu giờ on-call trả lãi. Người deploy chiều thứ Sáu, merge khi test chưa xanh → điều tốt bị phá vì thiếu chín; tốc độ không phải nhân đức khi nó đốt cháy giai đoạn thẩm định.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Người né một <em>migration</em> mãi không làm: → đặt trước mặt <strong>cái giá của việc không-làm</strong> — mỗi quý trì hoãn là bao nhiêu giờ on-call trả lãi, bao nhiêu rủi ro tích lại; điều lành hoãn lại chết già trong ngăn kéo. Người deploy chiều thứ Sáu, merge khi test chưa xanh: → điều tốt bị <strong>phá vì làm non</strong>; quả hái xanh thì chua, tốc độ đốt cháy khâu thẩm định không phải nhân đức.</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Đây là hai cực mà Thánh Tôma đặt quanh đức khôn ngoan: người trì trệ thiếu <em class="lat">praeceptum</em> (mệnh lệnh của ý chí — bước cuối biến suy nghĩ thành hành động), kẹt trong <em class="lat">evagatio mentis</em> (sự lang thang của tâm trí) — chính cái vòng “nghĩ mãi không làm.” Người hấp tấp thiếu <em class="lat">cautio</em> và <em class="lat">circumspectio</em> (sự thận trọng và nhìn quanh — hai phần của prudentia, ST II-II q.49), phóng tới <em class="lat">praeceptum</em> mà bỏ qua <em class="lat">consilium</em> (bàn hỏi) và <em class="lat">iudicium</em> (phán đoán). Cả hai đều là khập khiễng của cùng một cỗ máy khôn ngoan: một chân bước không tới, một chân bước quá đà. Ranh giới: sự trì trệ này gần <em class="lat">acedia</em> (chán chường thiêng liêng) khi nó là né tránh điều tốt-mà-khó; nhưng đừng nhầm với mệt mỏi chính đáng cần nghỉ.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Hôm nay tôi trốn ở cực nào — nghĩ-mãi-không-làm, hay làm-mà-chưa-nghĩ?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c17">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 17</span>
+          <h3 class="pair-title">Người hiền lành và người nóng giận</h3>
+          <span class="pair-latin">mansueti / iracundi</span>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Người hiền lành: canh chừng sự hiền hóa thành nhu nhược buông xuôi — hiền đến mức không sửa điều phải sửa là bỏ rơi người mình có bổn phận giúp. Người nóng giận: trong cơn giận, điều sai trông như đúng; phán đoán bị mù tạm thời.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Lead né xung đột để “giữ hòa khí” trong khi chất lượng tuột dốc → hiền lành không tiêu chuẩn là bỏ bê có vỏ bọc nhân đức. Người nóng → quy tắc cá nhân: comment viết trong cơn giận để ở draft, gửi sau khi nguội; một cơn giận trong retro phá psychological safety mất sáu tháng xây.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Một lead né mọi xung đột để “giữ hòa khí,” để một design tồi trôi qua vì ngại làm tác giả buồn — chất lượng tuột dốc trong sự dễ chịu. → hiền lành <strong>không tiêu chuẩn</strong> là bỏ bê khoác áo nhân đức. Người nóng: comment gắt viết lúc 11 giờ đêm. → quy tắc cá nhân: viết xong để <strong>draft</strong>, gửi sau khi nguội; một cơn giận trong retro phá <em>psychological safety</em> (an toàn tâm lý) mất sáu tháng xây.</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô lật mặt trái của hiền lành: <em class="lat">mansuetudo</em> (sự hiền hòa) có thể thoái hóa thành <em class="lat">remissio</em> (buông lơi) — dịu đến mức không sửa điều phải sửa là <strong>bỏ rơi</strong> người mình có bổn phận giúp. Điểm tinh vi: nhân đức nằm ở <em class="lat">medium</em> (điểm giữa), và hiền lành trượt về phía nhu nhược cũng là nết xấu, y như nóng giận trượt về phía kia. Với người nóng: “trong cơn giận điều sai trông như đúng” — <em class="lat">ira</em> làm mù <em class="lat">iudicium</em> tạm thời; nên kế sách không phải đè cảm xúc mà là <strong>hoãn hành động</strong> cho tới khi phán đoán sáng lại. Ranh giới: có cơn giận chính đáng — <em class="lat">ira per zelum</em> (giận vì lòng sốt sắng, như Chúa đuổi kẻ buôn bán khỏi Đền Thờ); phân biệt nó với <em class="lat">ira per vitium</em> (giận do nết xấu) là <em class="lat">discretio</em>.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Sự “dễ chịu” của tôi có đang là đức ái, hay tôi đang mua bình an cho mình bằng việc bỏ rơi tiêu chuẩn?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c18">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 18</span>
+          <h3 class="pair-title">Người khiêm nhường và người kiêu căng</h3>
+          <span class="pair-latin">humiles / elati</span>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Với người khiêm nhường: hãy nói sự thật về điều cao quý họ đang hy vọng — để họ vững. Với người kiêu căng: hãy nói về sự chóng qua của vinh quang trần thế họ đang ôm mà không giữ nổi. Và ngài thêm hai cảnh báo tinh tế: người kiêu đừng tự do quá mức đáng có; <strong>người khiêm nhường đừng quy phục quá mức đáng có</strong> — kẻo sự nhún nhường thái quá khiến họ tôn trọng cả nết xấu của người khác.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Mentee tự ti → khẳng định bằng chứng cứ năng lực thật, không khen suông. Người kiêu vì kỹ năng → framework hôm nay là legacy ngày mai; góp ý qua câu hỏi (“điều gì xảy ra nếu node này chết?”) thay vì tuyên bố trực diện. Và cảnh báo quý giá cho người “ngoan”: deference thái quá với ý kiến senior sai là đồng lõa — khiêm nhường không bao giờ đòi anh approve một design hỏng.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Mentee tự ti, giỏi mà không tin mình: → khẳng định bằng <strong>bằng chứng năng lực thật</strong> (<em>“PR tuần trước anh bắt được race condition mà CI bỏ lọt”</em>), không khen suông. Người kiêu vì kỹ năng: → góp ý qua câu hỏi — <em>“điều gì xảy ra nếu node này chết giữa chừng?”</em> — thay vì tuyên bố trực diện; và nhắc nhẹ: framework hôm nay là legacy ngày mai. Và cảnh báo Grêgôriô dành cho người “ngoan”: <em>deference</em> (sự nhún nhường) thái quá trước một design sai của senior là <strong>đồng lõa</strong> — khiêm nhường không bao giờ đòi anh approve một thiết kế hỏng.</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Đây là một trong những chỗ tinh tế nhất của cả Quyển III: <strong>người khiêm nhường đừng quy phục quá mức đáng có</strong> — kẻo sự nhún nhường thái quá khiến họ tôn trọng cả nết xấu của người khác. Nghĩa là <em class="lat">humilitas</em> (khiêm nhường) thật <strong>không</strong> đồng nghĩa với tự xóa mình hay im trước sai lầm. Thánh Tôma định nghĩa khiêm nhường là <strong>sự thật về chính mình</strong> trước mặt Chúa — <em class="lat">humilitas</em> đặt nền trên <em class="lat">veritas</em>; nên khiêm nhường thật có thể nói “design này sai” mà không mâu thuẫn, vì đó là sự thật. <em class="lat">Superbia</em> (kiêu ngạo — mẹ của mọi tội) và tự ti bệnh hoạn là hai cách <strong>nói dối về mình</strong>: một phóng đại, một triệt tiêu.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Sự “khiêm tốn” của tôi hôm nay có lần nào là cái cớ để tránh trách nhiệm nói lên sự thật không?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c19">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 19</span>
+          <h3 class="pair-title">Người cố chấp và người hay dao động</h3>
+          <span class="pair-latin">pertinaces / inconstantes</span>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Người cố chấp: họ nghĩ về mình nhiều hơn con người thật của họ — sự ngoan cố là can đảm giả. Người dao động: cần được neo lại bằng sức nặng của mục đích — nhẹ dạ đổi ý theo gió là chưa có trọng tâm.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Người “kết hôn” với kiến trúc của mình → giúp tách cái tôi khỏi design: phê bình bản vẽ không phải phê bình người vẽ. Người chạy theo mọi framework mới → dùng ADR (architecture decision record — biên bản quyết định kiến trúc) như lời khấn: đã chốt thì trung thành, chỉ mở lại khi có lý do nặng ký được ghi thành văn.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Người “kết hôn” với design của mình, mọi phê bình bản vẽ bị nghe thành phê bình con người: → giúp tách cái tôi khỏi tạo vật — <em>“ta đang mổ xẻ bản thiết kế, không mổ xẻ anh.”</em> Người chạy theo mọi framework mới, tháng này Rust mai kia Zig, viết lại hạ tầng theo hype: → dùng <em>ADR</em> (biên bản quyết định kiến trúc) như một <strong>lời khấn nhẹ</strong>: đã chốt thì trung thành, chỉ mở lại khi có lý do nặng ký ghi thành văn.</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô chẩn rất sâu người cố chấp: họ <strong>nghĩ về mình cao hơn con người thật</strong> — <em class="lat">pertinacia</em> (sự cố chấp) là <em class="lat">fortitudo falsa</em> (can đảm giả), một cái tôi phồng lên đóng vai kiên định. Người dao động thì thiếu <em class="lat">pondus</em> — sức nặng của mục đích, cái mà Augustinô gọi <em class="lat">pondus amoris</em> (sức nặng của lòng mến: <em>“amor meus, pondus meum”</em> — lòng mến tôi là sức nặng của tôi, kéo tôi về chỗ nó hướng). Không có trọng tâm mến yêu, người ta trôi theo mọi cơn gió mới. Ranh giới: kiên định (<em class="lat">constantia</em>) là nhân đức, cố chấp là nết xấu — ranh giới là <strong>tôi trung thành với sự thật, hay trung thành với cái tôi?</strong></p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Lần gần nhất tôi bảo vệ một quyết định kỹ thuật, tôi bảo vệ vì nó <strong>đúng</strong>, hay vì nó là <strong>của tôi</strong>?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c20">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 20</span>
+          <h3 class="pair-title">Người mê ăn uống và người kiêng khem</h3>
+          <span class="pair-latin">gulae dediti / abstinentes</span>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Người mê ăn uống: sự tham ăn kéo theo nói nhiều, trì độn tâm trí và mở cửa cho dục vọng. Người kiêng khem: canh chừng kiêu ngạo về sự khổ chế của mình và thói xét đoán người không kiêng — kiêng khem sinh kiêu là mất cả hai.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team (loại suy tiêu thụ)</div>
+            <p>“Tham ăn” hôm nay là tiêu thụ vô độ: notification, doomscrolling, ngấu nghiến thông tin không tiêu hóa — tâm trí no giả mà đói thật, không còn chỗ cho deep work. “Khổ hạnh năng suất” là người tự hào không nghỉ, khinh đồng nghiệp đi về đúng giờ → sự tiết độ khoe mình đã thành kiêu ngạo.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>“Tham ăn” thời số: ngấu nghiến notification, doomscroll, mở hai mươi tab, nuốt thông tin không tiêu hóa — tâm trí <strong>no giả mà đói thật</strong>, không còn khoảng cho <em>deep work</em> (làm việc chiều sâu). “Khổ hạnh khoe mình”: người tự hào không bao giờ nghỉ, khinh đồng nghiệp về đúng giờ, đóng ghim “còn thức lúc 2 giờ sáng” như huy chương — tiết độ đã sinh kiêu.</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô nối <em class="lat">gula</em> (mê ăn) với chuỗi hệ quả: nói nhiều, trí trì độn, mở cửa cho dục vọng — vì thân xác vô độ kéo linh hồn xuống. Cassian xếp <em class="lat">gastrimargia</em> (mê ăn) là mối đầu tiên trong tám <em class="lat">logismoi</em> vì nó là cửa ngõ: thắng được nó mới mong thắng các mối sau. Dịch sang thời số, “cái bụng” cần chế ngự là <strong>sự chú ý</strong> (<em class="lat">attentio</em>) — của ăn của tâm trí hôm nay. Nhưng Grêgôriô lập tức cân vế kia: <em class="lat">abstinentia</em> (kiêng khem) sinh kiêu và thói xét đoán người không kiêng thì <strong>mất cả hai</strong> — khổ chế mà khoe là đã đánh mất phần thưởng (x. Mt 6). Ranh giới: đây là <em class="lat">temperantia</em> (tiết độ — nhân đức trụ); nhưng khổ chế trong nghề (kỷ luật chú ý) là phương tiện phục vụ, đừng biến thành thước đo đạo đức để soi người khác.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Hôm nay tôi cho tâm trí “ăn” gì — và có đang lấy sự bận rộn của mình làm cớ để thấy mình hơn người về đúng giờ không?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <div class="ornament"><span class="line"></span>✠<span class="line"></span></div>
+
+  <!-- ============ PART III ============ -->
+  <section id="p3">
+    <h2 class="part"><span class="partnum">Phần III · Cặp 21–26</span>CỦA CẢI, HÒA BÌNH VÀ LỜI NÓI</h2>
+    <div class="pairs">
+
+      <article class="pair" id="c21">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 21</span>
+          <h3 class="pair-title">Người rộng rãi cho đi và người chiếm đoạt của người khác</h3>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Người cho đi: cho mà không kiêu, không kể công, không khinh người nhận; và của cho phải từ nguồn ngay chính. Kẻ chiếm đoạt: không có sám hối thật nếu không hoàn trả điều đã chiếm.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Mentor quảng đại → canh chừng savior complex (mặc cảm cứu tinh): cho mà tạo lệ thuộc là cho mình, không phải cho người. Người cướp credit → nhận công trình người khác là trộm cắp đúng nghĩa; “hoàn trả” ở đây là sửa attribution công khai, đúng nơi đã chiếm.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Mentor quảng đại nhưng luôn <em>“để tôi làm cho nhanh,”</em> rốt cuộc mentee không bao giờ tự đứng được → <em>savior complex</em> (mặc cảm cứu tinh): cho theo cách tạo lệ thuộc là đang cho <strong>mình</strong> (nhu cầu được-cần-đến), không phải cho <strong>người</strong>. Người cướp credit: trình bày phần lớn công của người khác trong review với sếp như của mình → đây là <strong>trộm cắp đúng nghĩa</strong>, và “hoàn trả” là sửa attribution <strong>công khai, đúng nơi đã chiếm</strong>.</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô đặt điều kiện cho việc cho: cho <strong>mà không kiêu, không kể công, không khinh người nhận</strong>, và của cho phải từ nguồn ngay chính. Với kẻ chiếm đoạt, ngài nêu nguyên tắc luân lý cứng: <strong>không có sám hối thật nếu không hoàn trả</strong> — <em class="lat">non remittitur peccatum nisi restituatur ablatum</em> (tội không được tha nếu vật đã lấy không được trả lại — nguyên tắc cổ điển của thần học luân lý về <em class="lat">restitutio</em>, sự đền trả). Đây không phải mẹo mà là giáo huấn luân lý <strong>chắc chắn</strong>: công bằng đòi đền trả, và cướp công là tội nghịch đức công bằng. Chỗ loại suy gãy: “hoàn trả” credit trong team là công bằng nghề nghiệp; còn <em class="lat">restitutio</em> trong Bí tích Hòa Giải là chuyện của tòa trong — đừng lẫn hai tòa.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Có cái cho nào của tôi thật ra đang phục vụ nhu cầu được-cần-đến của chính tôi? Và có công lao nào của người khác tôi đang lặng lẽ mặc lên mình?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c22">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 22</span>
+          <h3 class="pair-title">Người không lấy của ai nhưng cũng không cho, và người vừa cho vừa chiếm</h3>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Người “trung lập”: giữ lại điều mình có thể trao cũng là một cách chiếm giữ — Grêgôriô dạy mạnh mẽ rằng khi giúp người túng thiếu, ta <strong>trả cho họ điều thuộc về họ</strong>, không phải ban ơn từ của riêng ta. Người vừa làm phúc vừa chiếm đoạt: phải ngừng cái hại trước đã — việc tốt không mua được quyền làm điều xấu.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Người “vô hại” nhưng ôm kiến thức, không viết docs, không mentor → giữ lại khỏi tài sản chung của team là một sự chiếm hữu thầm lặng, dù không lấy của ai. Người mentor công khai nhưng cắt góc đạo đức chỗ khác → integrity không phải carbon credit: điều tốt cột A không bù trừ điều hại cột B.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Người “vô hại” ôm trọn kiến thức hệ thống, không viết doc, không mentor, <em>“tôi có lấy gì của ai đâu”</em> → giữ lại khỏi tài sản chung là <strong>một sự chiếm hữu thầm lặng</strong>, dù không lấy của ai. Người mentor công khai hào phóng nhưng cắt góc đạo đức chỗ khác (thổi phồng metric, giấu một lỗ hổng) → integrity <strong>không phải carbon credit</strong> (tín chỉ carbon): điều tốt cột A không bù trừ điều hại cột B.</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô dạy một điều mạnh và dễ bị bỏ qua: khi giúp người túng, ta <strong>trả cho họ điều thuộc về họ</strong>, không phải ban ơn từ của riêng ta — vì của cải xét cho cùng có chiều kích chung, <em class="lat">destinatio universalis bonorum</em> (mục đích phổ quát của của cải — nguyên tắc nền của Học thuyết Xã hội Công Giáo). Giữ khư điều mình có thể trao mà không thiệt gì cho mình, khi người khác thật sự cần, là một hình thức bất công của <strong>thiếu sót</strong> (<em class="lat">peccatum omissionis</em> — tội do bỏ sót), không chỉ của hành động. Với người “vừa cho vừa chiếm”: việc tốt <strong>không mua được quyền làm điều xấu</strong> — luân lý không có cơ chế bù trừ. Ranh giới: đừng <em class="lat">scrupulositas</em> hóa điều này thành “phải cho hết mọi lúc” — có <em class="lat">discretio</em> về khi nào, cho ai, bao nhiêu.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Có kho tri thức nào tôi đang ôm mà việc chia sẻ chẳng tốn gì của tôi ngoài một chút “độc quyền được cần đến”?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c23">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 23</span>
+          <h3 class="pair-title">Người bất hòa và người hòa thuận</h3>
+          <span class="pair-latin">discordes / pacati</span>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Người bất hòa: không có đức ái và hòa thuận, mọi nhân đức khác không sinh ích — đức ái là gốc rễ. Người hòa thuận: <strong>đừng yêu sự yên ổn của mình hơn chân lý</strong> — đừng vì sợ xáo trộn bình an riêng mà im lặng trước điều phải lên tiếng.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Hai engineer hoặc hai team chiến tranh lạnh → không kiến trúc nào sống sót qua một cuộc chiến giữa các team sở hữu nó; hòa giải là việc kỹ thuật khẩn cấp. Người yêu hòa khí → “giữ hòa bình” bằng cách im về lỗ hổng bảo mật là <em class="lat">pax falsa</em> (hòa bình giả) — bình an thật không xây trên điều chưa dám nói.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Hai team sở hữu chung một hệ thống lâm chiến tranh lạnh, mỗi bên đổ lỗi bên kia mỗi lần incident → <strong>không kiến trúc nào sống sót qua cuộc chiến giữa những người sở hữu nó</strong>; hòa giải ở đây là việc kỹ thuật <strong>khẩn cấp</strong>, không phải chuyện “mềm.” Người yêu hòa khí: im về một lỗ hổng bảo mật để tránh làm căng trong sprint → đó là <em class="lat">pax falsa</em> (hòa bình giả).</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô đặt đức ái làm <strong>gốc rễ</strong>: không hòa thuận thì mọi nhân đức khác không sinh ích — vì <em class="lat">caritas forma virtutum</em> (đức mến là mô thức/linh hồn của mọi nhân đức, theo Thánh Tôma): thiếu nó, các đức khác chỉ là bộ xương không hồn. Nhưng ngài lập tức cân: <strong>đừng yêu sự yên ổn của mình hơn chân lý</strong>. Đây là phân biệt sống còn giữa <em class="lat">pax</em> thật (hoa trái của trật tự đúng — Augustinô: <em class="lat">pax est tranquillitas ordinis</em>, bình an là sự an tĩnh của trật tự) và sự yên tĩnh giả xây trên điều chưa dám nói. Ranh giới: người “kiến tạo hòa bình” được chúc phúc (Mt 5,9), nhưng bình an Tin Mừng không phải tránh né — Chúa nói <em>“Thầy không đến đem bình an mà đem gươm”</em> (Mt 10,34), nghĩa là chân lý sẽ gây phân rẽ trước khi hiệp nhất thật.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Sự im lặng “giữ hòa khí” của tôi hôm nay phục vụ bình an thật của team — hay chỉ phục vụ sự dễ chịu của riêng tôi?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c24">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 24</span>
+          <h3 class="pair-title">Người gieo bất hòa và người kiến tạo hòa bình</h3>
+          <span class="pair-latin">seminantes iurgia / pacifici</span>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Kẻ gieo bất hòa: hãy nhìn xem mình đang phục vụ ai — chia rẽ là chữ ký của <em class="lat">diabolos</em> (kẻ chia rẽ, ma quỷ), hiệp nhất là chữ ký của Thần Khí. Người kiến tạo hòa bình: phúc thay, nhưng phải phân định <strong>hòa bình nào</strong> — không được làm hòa với sự dữ; hòa bình với điều ác là đồng lõa.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Người chuyển lời “X nói về design của anh đấy” → gọi tên hành vi gieo rắc, đừng để nó núp bóng “chia sẻ thông tin”. Người có thiên hướng trung gian hòa giải → đừng môi giới những thỏa hiệp che lấp vấn đề thật: một “hòa bình” cho phép ship code hỏng là phản bội cả hai phía.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Người hay chuyển lời <em>“à, X có nói về design của anh đấy nhé”</em> → gọi tên hành vi <strong>gieo rắc</strong>, đừng để nó núp bóng “chia sẻ thông tin”; chia rẽ là chữ ký của <em class="lat">diabolos</em> (kẻ chia rẽ). Người có thiên hướng trung gian, thích dàn xếp → đừng môi giới những “hòa bình” che lấp vấn đề thật: một thỏa hiệp cho phép ship code hỏng là <strong>phản bội cả hai phía</strong>.</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô soi động cơ: kẻ gieo bất hòa hãy nhìn <strong>mình đang phục vụ ai</strong> — nguyên nghĩa <em class="lat">diabolos</em> (Hy Lạp) là “kẻ ném vào giữa để chia cắt,” đối cực với <em class="lat">Paraclitus</em> (Đấng Bảo Trợ) Đấng quy tụ. Hiệp nhất là chữ ký của Thần Khí (Ep 4,3: giữ sự hiệp nhất trong dây ràng buộc bình an). Nhưng người kiến tạo hòa bình phải phân định <strong>hòa bình nào</strong>: không được làm hòa với sự dữ — hòa bình với điều ác là đồng lõa, không phải nhân đức. Đây là chỗ <em class="lat">discretio</em> tinh tế nhất: cùng một hành vi “dàn xếp” có thể là phúc lành (Mt 5,9) hoặc phản bội, tùy nó phục vụ sự thật hay che giấu sự thật. Ranh giới: đừng biến điều này thành nghi ngờ mọi người truyền đạt thông tin — phân biệt đưa tin ngay lành với gieo rắc là đọc <strong>ý hướng và hiệu quả</strong>.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Lần gần nhất tôi “chuyển lời,” tôi quy tụ người ta lại gần nhau hơn hay đẩy họ xa nhau hơn?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c25">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 25</span>
+          <h3 class="pair-title">Người hiểu sai mà tự tin, và người hiểu đúng mà nói thiếu khiêm nhường</h3>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Người hiểu sai lời sách thánh: khiêm tốn học lại trước khi dạy. Người hiểu đúng nhưng nói cách kiêu căng: chân lý được nói cách kiêu căng gây thương tích — người nghe vứt cả thông điệp lẫn người đưa tin.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Người đọc sai docs, hiểu sai chuẩn mà khẳng định chắc nịch → tập thói trích nguồn, verify trước khi tuyên bố. Người đúng mà khó ưa → <strong>đúng là điều kiện cần, chưa đủ</strong>: một RFC bị bác vì giọng điệu là thất bại kép — của tác giả và của chân lý mà lẽ ra team được hưởng.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Người đọc lướt doc, hiểu sai một cơ chế nhưng khẳng định chắc nịch trong meeting, dẫn cả nhóm đi sai → tập thói <strong>trích nguồn, verify trước khi tuyên bố</strong>; khiêm tốn học lại trước khi dạy. Người viết một RFC đúng về mặt kỹ thuật nhưng giọng trịch thượng (<em>“rõ ràng cách hiện tại là sai”</em>) → bị bác <strong>vì giọng điệu</strong>, và đó là thất bại kép: của tác giả, và của chân lý mà lẽ ra cả team được hưởng.</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô nhắm hai lối làm hỏng sự thật. Người hiểu sai mà tự tin phạm lỗi ngược với <em class="lat">docilitas</em> (tinh thần dễ dạy) — không chịu học trước khi nói. Người hiểu đúng mà kiêu phạm một lỗi tinh vi hơn: <strong>chân lý nói cách kiêu căng gây thương tích</strong>, và người nghe vứt cả thông điệp lẫn người đưa tin. Nền thần học: sự thật và cách chuyển tải sự thật không tách rời được — <em class="lat">modus</em> (cách thức) là một phần của <em class="lat">veritas</em> trong tương quan người với người; như Thánh Phaolô nói, sự thật phải đi trong đức ái (Ep 4,15), nếu không nó thành “thanh la phèng phèng” (1 Cr 13,1). Ranh giới: <strong>đúng là điều kiện cần, chưa đủ</strong> — nhưng đừng lật sang cực kia mà nghĩ “miễn dễ thương là được”; đức ái không thay thế sự chính xác, nó <strong>hoàn tất</strong> nó.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Khi tôi đúng, tôi có nói theo cách giúp người khác đón nhận được sự thật — hay theo cách khiến họ phải chọn giữa sự thật và lòng tự trọng của họ?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c26">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 26</span>
+          <h3 class="pair-title">Người có khả năng dạy mà sợ, và người chưa đủ chín mà cứ lao vào</h3>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Người có khả năng giảng dạy nhưng trốn tránh vì “khiêm nhường” thái quá: ơn được ban là để trao đi — từ chối là một lỗi, không phải nhân đức. Người mà sự non nớt hoặc tuổi đời chưa cho phép nhưng sự hấp tấp thúc đẩy: phải được kìm lại, kẻo gieo sai lầm cho người khác.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Senior từ chối present, từ chối mentoring vì “ngại” → đó là <em class="lat">pusillanimitas</em> (nhát đảm) đội lốt khiêm nhường: kiến thức được trao là để lưu chuyển. Junior hai tuần viết trang “best practices” cho cả công ty → cần <em class="lat">docilitas</em> (tinh thần dễ dạy) trước đã: nhiệt huyết quý, nhưng dạy điều mình chưa tiêu hóa là nhân bản lỗi.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Một senior giỏi từ chối present, từ chối mentoring, <em>“tôi ngại nói trước đám đông”</em> → đó là <em class="lat">pusillanimitas</em> (nhát đảm) đội lốt khiêm nhường; ơn được ban là <strong>để lưu chuyển</strong>, giữ lại là một lỗi chứ không phải nhân đức. Một junior hai tuần tuổi viết trang “best practices” áp cho cả công ty → nhiệt huyết quý, nhưng cần <em class="lat">docilitas</em> trước đã: dạy điều mình <strong>chưa tiêu hóa</strong> là nhân bản lỗi ra toàn hệ thống.</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô cân hai cực của việc dạy. Người có tài mà trốn: “khiêm nhường” của họ thật ra là một hình thức <strong>chôn nén bạc</strong> (x. Mt 25,25 — dụ ngôn nén bạc: đầy tớ chôn giấu nén bạc bị quở là “đầy tớ xấu xa và biếng nhác”). Ơn (<em class="lat">charisma</em>, <em class="lat">gratia gratis data</em> — ơn được ban để phục vụ người khác) không phải sở hữu riêng để cất kỹ, mà là của được ủy thác để sinh lời cho cộng đoàn. Người non mà lao vào thiếu điều Grêgôriô nhấn mạnh suốt Quyển I: đừng vội lên bục giảng khi chưa qua <em class="lat">purgatio</em> (thanh luyện) và <em class="lat">maturitas</em> (sự chín) — vì “gieo sai lầm cho người khác” nhân rộng cái hại. Ranh giới: đây là <em class="lat">sapientia pastoralis</em> (khôn ngoan mục vụ), không phải luật buộc; và “chưa đủ chín để dạy X” <strong>không</strong> phải phán xét giá trị con người, chỉ là thứ tự đúng của việc học rồi mới dạy.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Có ơn nào Chúa trao cho tôi để phục vụ team mà tôi đang chôn dưới cái cớ “ngại”?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <div class="ornament"><span class="line"></span>✠<span class="line"></span></div>
+
+  <!-- ============ PART IV ============ -->
+  <section id="p4">
+    <h2 class="part"><span class="partnum">Phần IV · Cặp 27–29</span>HOÀN CẢNH VÀ LỊCH SỬ CÁ NHÂN</h2>
+    <div class="pairs">
+
+      <article class="pair" id="c27">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 27</span>
+          <h3 class="pair-title">Người thịnh vượng thế tạm và người gặp nghịch cảnh</h3>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Người đang thịnh vượng: của cải và thành công là quà tặng kiêm thử thách — đừng xây an toàn giả trên điều chóng qua. Người khao khát mà chỉ gặp nghịch cảnh: nghịch cảnh là kỷ luật của người Cha đối với con cái Ngài yêu (x. Hr 12,6) — nó tinh luyện niềm hy vọng.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Sự nghiệp đang lên — promotion, công ty hot, thị trường thuận → thành công là của mượn; căn tính của anh không bằng job title, và mùa đông layoff không hỏi ý ai trước khi đến. Người bị kẹt, bị vượt, mất việc → nghịch cảnh không phải bản án về giá trị con người; đây chính là nơi câu hỏi “lòng trung tín dưới mất mát” được tôi luyện thật thay vì tưởng tượng.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Sự nghiệp đang lên — promotion, công ty hot, offer bay tới → <strong>thành công là của mượn</strong>; căn tính của anh không bằng <em>job title</em> (chức danh), và mùa đông layoff không hỏi ý ai trước khi đến. Người bị kẹt, bị vượt, mất việc → nghịch cảnh <strong>không phải bản án về giá trị con người</strong>; đây chính là nơi câu hỏi “lòng trung tín dưới mất mát” được tôi luyện thật thay vì tưởng tượng.</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô đọc cả hai mùa qua lăng kính cánh chung. Thịnh vượng là <em class="lat">donum simul et tentatio</em> (vừa là quà tặng vừa là thử thách): nguy hiểm của nó là dựng <em class="lat">securitas falsa</em> (an toàn giả) trên điều chóng qua. Nghịch cảnh, ngài đọc qua Hr 12,6: <em class="lat">quem enim diligit Dominus castigat</em> (Chúa thương ai thì mới sửa dạy — nghĩa “sửa dạy” như người cha, không phải trừng phạt của quan tòa). <strong>Đây là chỗ loại suy phải cúi đầu và gãy:</strong> mất việc, bị vượt là đau thật, và tôi tuyệt đối không được giảng <em>“đây là Chúa thanh luyện anh”</em> cho một đồng nghiệp vừa bị layoff — thần học đau khổ là để <strong>người chịu tự do đón nhận</strong> trong tương quan riêng của họ với Chúa, không phải để người ngoài áp lên như lời an ủi rẻ tiền. Điều tôi được làm: ở bên, cụ thể, không phán.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>(cho riêng tôi): tôi đang xây “an toàn” của mình trên nền nào — trên chức danh và thị trường lao động, hay trên Đấng không đổi thay?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c28">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 28</span>
+          <h3 class="pair-title">Người đã kết hôn và người độc thân</h3>
+          <span class="pair-latin">coniugati / caelibes</span>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Người kết hôn: chung thủy và nhẫn nại lẫn nhau; lo làm đẹp lòng người phối ngẫu là mối bận tâm chính đáng của bậc sống (x. 1 Cr 7,33) — miễn là không vì thế mất lòng Thiên Chúa. Người độc thân: tự do để phụng sự không phân chia, nhưng đừng vì tự do ấy mà khinh bậc hôn nhân.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Trực tiếp cho anh: thiết kế on-call, giờ làm, ranh giới công việc quanh hôn nhân sắp tới là <strong>bổn phận của bậc sống</strong>, không phải thiếu cam kết nghề nghiệp — Grêgôriô đứng về phía anh ở điểm này. Chiều ngược lại: đừng mặc định teammate độc thân “rảnh” để dồn ca trực và việc gấp — tự do của họ thuộc về họ, không phải tài nguyên dự phòng của team.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p><strong>Trực tiếp cho anh:</strong> thiết kế on-call, giờ làm, ranh giới công việc quanh hôn nhân sắp tới là <strong>bổn phận của bậc sống</strong>, không phải thiếu cam kết nghề nghiệp — Grêgôriô đứng về phía anh ở điểm này (x. 1 Cr 7,33: người có gia đình lo làm đẹp lòng người phối ngẫu là <strong>chính đáng</strong>). Chiều ngược: đừng mặc định teammate độc thân “rảnh” nên dồn ca trực dịp lễ và việc gấp — tự do của họ <strong>thuộc về họ</strong>, không phải tài nguyên dự phòng của team.</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô, theo Thánh Phaolô (1 Cr 7), tôn trọng <strong>cả hai bậc sống</strong> mà không hạ bên nào: người có đôi lo đẹp lòng nhau là chính đáng miễn không vì thế mất lòng Chúa; người độc thân có tự do phụng sự “không phân chia” nhưng đừng vì thế khinh bậc hôn nhân. Với anh cụ thể: hôn nhân sắp tới không phải đối thủ của ơn gọi nghề nghiệp — trong thần học Công Giáo, <strong>hôn nhân là một ơn gọi và một bí tích</strong>, một con đường nên thánh thật sự; bảo vệ thời gian cho nó là bảo vệ một điều thánh, không phải “lười.” <em class="lat">Laborare est orare</em> (lao động là cầu nguyện) của Biển Đức đi đôi với <em class="lat">statio</em> (nhịp và ranh giới); công việc không có ranh giới không phải nhiệt thành mà là thiếu trật tự. Ranh giới: đây chạm giáo huấn về bậc sống (cấp độ cao) — nhưng chi tiết “thiết kế on-call thế nào” là khôn ngoan thực hành, tùy hoàn cảnh.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Tôi có đang lặng lẽ coi thời gian của người độc thân trong team là “của chung” dễ trưng dụng không — và tôi có đang bảo vệ đủ thời gian thánh cho bậc sống của <strong>chính mình</strong>?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c29">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 29</span>
+          <h3 class="pair-title">Người từng sa ngã nặng và người được gìn giữ</h3>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Người từng trải tội nặng: lòng thương xót và gương các hối nhân — ai được tha nhiều thì yêu mến nhiều (x. Lc 7,47); quá khứ được hoán cải trở thành nguồn khiêm nhường và lòng trắc ẩn. Người được gìn giữ: bền chí và <strong>đừng khinh ai</strong> — đứng vững cho đến nay là ân sủng, không phải công trạng để so kè.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team (loại suy)</div>
+            <p>Người từng gây outage lớn và đi qua nó cách trung thực → thường trở thành reviewer khôn ngoan và nhân hậu nhất team: họ biết vực sâu ở đâu. Người chưa từng “cháy” → “chưa gặp incident lớn” là ân sủng cộng với thời gian, không phải bằng chứng ưu việt; khinh người từng ngã là không hiểu mình đang đứng nhờ đâu.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Người từng gây một outage lớn và đi qua nó cách trung thực (đứng ra postmortem, không đổ lỗi, học tận gốc) → thường thành <strong>reviewer khôn ngoan và nhân hậu nhất team</strong>: họ biết vực sâu ở đâu vì đã rơi xuống đó. Người chưa từng “cháy” → “chưa gặp incident lớn” là <strong>ân sủng cộng thời gian</strong>, không phải bằng chứng ưu việt; khinh người từng ngã là không hiểu mình đang đứng nhờ đâu.</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô trích Lc 7,47 — ai được tha nhiều thì yêu mến nhiều — và biến quá khứ được hoán cải thành <strong>nguồn khiêm nhường và lòng trắc ẩn</strong>, không phải vết nhơ để giấu. Đây là logic ngược đời của ân sủng: Thánh Phêrô chối Thầy ba lần rồi thành mục tử đoàn chiên; Thánh Phaolô bắt bớ Hội Thánh rồi thành Tông Đồ dân ngoại — <em class="lat">felix culpa</em> (lỗi hồng phúc) không tôn vinh tội, mà tôn vinh lòng thương xót lớn hơn tội. Với người “được gìn giữ”: đứng vững tới nay là <strong>ân sủng, không phải công trạng</strong> để so kè — và Grêgôriô gắn một mệnh lệnh sắc: <strong>đừng khinh ai</strong>, vì người đang đứng nhờ ân sủng mà tưởng nhờ sức mình là người sắp ngã (x. 1 Cr 10,12: ai tưởng mình đứng vững hãy coi chừng kẻo ngã). Ranh giới: loại suy “outage” chỉ chạm bề mặt — sa ngã luân lý và ơn tha thứ thuộc tòa Hòa Giải, sâu hơn mọi postmortem; đừng tầm thường hóa.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Tôi đang đứng vững ở đâu vì nghĩ nhờ tài mình — chỗ nào thật ra chỉ là “chưa tới lượt tôi bị thử”?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ PART V ============ -->
+  <section id="p5">
+    <h2 class="part"><span class="partnum">Phần V · Cặp 30–36</span>GIẢI PHẪU LỖI LẦM VÀ HOÁN CẢI</h2>
+    <p class="part-note">Cụm này là phần sâu nhất của Quyển III: Grêgôriô mổ xẻ các “chế độ thất bại” (failure modes) của linh hồn với độ chính xác của một postmortem.</p>
+    <div class="pairs">
+
+      <article class="pair" id="c30">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 30</span>
+          <h3 class="pair-title">Người khóc tội trong hành động và người khóc tội trong tư tưởng</h3>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Tội đã thành hành động: sám hối phải trọn vẹn tương xứng với điều đã làm, và giữ lỗi xưa trước mắt để khỏi tái phạm (x. Tv 51). Tội còn trong tư tưởng: phải coi trọng — trận chiến thắng hay bại trước hết trong <em class="lat">cogitatio</em> (tư tưởng); chặn từ thượng nguồn thì dòng dưới sạch.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Lỗi hữu hình (đã gây outage) → postmortem trung thực, khắc phục tận gốc, không che. Mẫu hình còn ẩn (sự khinh thường nuôi trong lòng với một đồng nghiệp, ý định “đi tắt” mới chỉ trong đầu) → xử lý ngay ở staging: <strong>bug bắt ở tầng tư tưởng là bug rẻ nhất</strong> — chưa ai bị ảnh hưởng, rollback chỉ tốn một lời cầu nguyện.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Lỗi hữu hình đã gây outage → postmortem trung thực, khắc phục tận gốc, <strong>không che</strong>; và giữ bài học trước mắt để khỏi tái phạm (x. Tv 51: <em>“tội con, con hằng nhìn nhận”</em>). Mẫu hình còn ẩn — sự khinh thường đang nuôi âm thầm trong lòng với một đồng nghiệp, ý định “đi tắt” mới chỉ trong đầu → xử <strong>ngay ở tầng tư tưởng</strong>: bug bắt ở staging của tâm hồn là bug rẻ nhất — chưa ai bị ảnh hưởng, “rollback” chỉ tốn một lời cầu nguyện.</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô định vị trận chiến ở thượng nguồn: thắng hay bại <strong>trước hết trong <em class="lat">cogitatio</em> (tư tưởng)</strong> — chặn từ nguồn thì dòng dưới sạch. Đây đúng là kỷ luật của Cassian về <em class="lat">logismoi</em> (những mối nghĩ): không phải mọi ý nghĩ ập tới là tội, nhưng có một khoảnh khắc <em class="lat">consensus</em> (ưng thuận) nơi ý chí gật đầu — và toàn bộ nghệ thuật thiêng liêng là bắt cái ý nghĩ <strong>trước</strong> khoảnh khắc đó, khi nó còn là <em class="lat">suggestio</em> (gợi ý) chưa thành <em class="lat">consensus</em>. Chỗ này loại suy chạy đẹp nhưng phải nhớ: “bug ở tư tưởng” không có nghĩa mọi cám dỗ đã là tội — Công Đồng Trentô dạy <em class="lat">concupiscentia</em> (dục vọng còn lại sau Rửa Tội) <strong>tự nó chưa phải tội</strong>, chỉ là “nhiên liệu” (<em class="lat">fomes</em>); tội bắt đầu ở ưng thuận. Đừng <em class="lat">scrupulositas</em> hóa mọi ý nghĩ thoáng qua.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Có “mẫu hình lỗi” nào đang chạy trong staging của lòng tôi — một sự khinh, một ý đi-tắt — mà tôi có thể rollback hôm nay trước khi nó lên production?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c31">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 31</span>
+          <h3 class="pair-title">Người khóc tội mà không chừa, và người chừa mà không khóc</h3>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Khóc mà không bỏ: nước mắt không kèm sửa đổi chẳng tẩy được gì, và sự than khóc lặp lại có thể thành nghi thức trống rỗng. Bỏ mà không khóc: gốc chưa được nhổ bằng sám hối có thể âm thầm mọc lại, và sự đoạn tuyệt không chút đau đớn đôi khi là kiêu ngạo chứ không phải hoán cải.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Người xin lỗi mỗi retro nhưng không bao giờ fix root cause → không có action items kèm chủ sở hữu và thời hạn thì lời xin lỗi là kịch nghệ. Người âm thầm sửa hành vi nhưng không bao giờ nhìn nhận tổn hại đã gây → blameless culture (văn hóa không đổ lỗi) không có nghĩa là không nhìn nhận: sự sửa chữa trọn vẹn bao gồm việc gọi tên tổn hại với người đã chịu nó.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Người xin lỗi cảm động mỗi retro nhưng không bao giờ fix root cause → nước mắt không kèm sửa đổi <strong>chẳng tẩy được gì</strong>; không có action item kèm chủ sở hữu và thời hạn thì lời xin lỗi là kịch nghệ. Người âm thầm sửa hành vi nhưng không bao giờ nhìn nhận tổn hại đã gây cho người bị ảnh hưởng → <em>blameless culture</em> (văn hóa không đổ lỗi) <strong>không</strong> có nghĩa là không nhìn nhận: sửa chữa trọn vẹn bao gồm <strong>gọi tên tổn hại với người đã chịu nó</strong>.</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô mổ xẻ hai nửa của hoán cải thật, mà thần học gọi là <em class="lat">contritio</em> (lòng thống hối) và <em class="lat">propositum</em> (quyết tâm chừa) — thiếu một nửa thì cả hai đều què. Khóc mà không chừa: cảm xúc không thành ý chí, và Grêgôriô cảnh báo tinh tế rằng <strong>than khóc lặp lại có thể thành nghi thức trống rỗng</strong> — một thứ tự-mãn-trong-nước-mắt. Chừa mà không khóc: <strong>gốc chưa nhổ bằng sám hối có thể âm thầm mọc lại</strong>, và “đoạn tuyệt không chút đau đớn đôi khi là kiêu ngạo chứ không phải hoán cải” — người tự sửa bằng ý chí sắt mà không hạ mình nhìn nhận có thể đang xây trên cát của <em class="lat">superbia</em>. Hoán cải thật cần <strong>cả</strong> trái tim mềm <strong>và</strong> ý chí cứng. Ranh giới: blameless trong kỹ thuật (tách người khỏi lỗi hệ thống) là đúng và tốt; nhưng nó về <strong>quy trách nhiệm nguyên nhân</strong>, không phải xóa <strong>tương quan</strong> — với người bị tổn thương, vẫn cần một lời nhận và xin lỗi thật.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Lời “xin lỗi” gần nhất của tôi có kèm cả hai — sự mềm của lòng và một hành động sửa cụ thể — hay chỉ có một nửa?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c32">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 32</span>
+          <h3 class="pair-title">Người khoe cả điều xấu mình làm, và người chê điều xấu nhưng vẫn làm</h3>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Người ca ngợi điều bất chính mình làm: đây là mức nặng nhất — phạm lỗi với cờ giương cao là rao giảng cho nết xấu. Người lên án điều sai mà vẫn làm: ít ra phán đoán còn nguyên vẹn — chính lời họ nói là chứng từ chống lại việc họ làm, và là đòn bẩy để kéo họ về.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Văn hóa khoe hack — “tao push thẳng main, rule là cho người yếu” → cử hành sự vi phạm là truyền giáo cho nết xấu: độc nhất cho norm của team, phải chặn công khai. Người nói “tôi biết làm thế này là tệ” mà vẫn làm → dùng chính tiêu chuẩn họ đã tự nêu: “anh đã nói đúng chuẩn rồi — giờ mình cùng đóng khoảng cách giữa biết và làm.”</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Văn hóa khoe hack — <em>“tao push thẳng main, rule là cho đứa yếu,”</em> đóng ghim như chiến tích → <strong>cử hành sự vi phạm là truyền giáo cho nết xấu</strong>: độc nhất cho norm của team, phải chặn <strong>công khai</strong> (vì cái hại là công khai). Người nói <em>“tôi biết làm thế này là tệ”</em> mà vẫn làm → <strong>dùng chính tiêu chuẩn họ đã tự nêu</strong>: <em>“anh đã nói đúng chuẩn rồi — giờ mình cùng đóng khoảng cách giữa biết và làm.”</em></p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô xếp bậc: người <strong>ca ngợi</strong> điều bất chính mình làm ở mức nặng nhất — “phạm lỗi với cờ giương cao là rao giảng cho nết xấu,” nhân cái hại ra người khác qua gương xấu (<em class="lat">scandalum</em> — cớ vấp phạm). Người lên án điều sai mà vẫn làm thì nhẹ hơn một bậc: <strong>phán đoán còn nguyên vẹn</strong>, và chính lời họ nói là chứng từ chống lại việc họ làm — đây là đòn bẩy quý để kéo họ về, vì họ đã ở phe sự thật ít là trong nhận thức. Đây gần với điều Thánh Phaolô thú nhận: <em class="lat">video meliora proboque, deteriora sequor</em> (tôi thấy điều tốt hơn và tán thành, nhưng lại theo điều xấu hơn — vọng lại Rm 7,15: “điều tôi muốn thì tôi không làm”). Sự chia rẽ giữa <strong>biết</strong> và <strong>làm</strong> là vết thương của <em class="lat">concupiscentia</em>, không xóa được trong đời này (Trentô), chỉ dần được chữa. Ranh giới: đừng lẫn người yếu-đuối-mà-biết-mình-sai (đáng thương và cứu được) với người tôn vinh cái sai (nguy hiểm cho cộng đoàn) — hai đáp ứng phải khác.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Có khoảng cách nào giữa điều tôi <strong>công khai tán thành</strong> và điều tôi <strong>thật sự làm</strong> khi không ai nhìn?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c33">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 33</span>
+          <h3 class="pair-title">Người sa ngã vì cơn bốc đồng và người phạm lỗi có chủ ý</h3>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Sa ngã vì cơn bất chợt: trách nhiệm nhẹ hơn và dễ chữa hơn — phương thuốc chính là <strong>tránh các dịp</strong> đưa đến sa ngã. Phạm lỗi có bàn tính: nặng hơn về bản chất vì ý chí đã chai — cần phương dược sâu hơn cho tận căn.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Lỗi trong cơn nóng (comment xúc phạm lúc căng, force-push hoảng loạn lúc 2 giờ sáng) → xử lý trigger và dựng guardrail: <strong>branch protection chính là “tránh dịp tội” bằng kỹ thuật</strong> — đừng để ý chí mệt mỏi một mình đối diện cám dỗ mà hệ thống có thể chặn giúp. Gian lận có kế hoạch (giấu test fail, game metric có chủ đích) → khác hẳn về bản chất, cần đáp ứng cấu trúc và nghiêm minh, không xử như lỗi bốc đồng.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Lỗi trong cơn nóng — comment xúc phạm lúc căng, force-push hoảng loạn lúc 2 giờ sáng → xử trigger và dựng guardrail: <strong>branch protection chính là “tránh dịp tội” bằng kỹ thuật</strong> — đừng để ý chí mệt mỏi một mình đối diện cám dỗ mà hệ thống có thể chặn giúp. Gian lận có kế hoạch — giấu test fail, game metric có chủ đích → <strong>khác hẳn về bản chất</strong>, cần đáp ứng cấu trúc, nghiêm minh, không xử như lỗi bốc đồng.</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Đây là phân biệt luân lý kinh điển: <strong>mức độ tự do và ý thức</strong> quyết định tính nặng nhẹ của hành vi. Tội do <em class="lat">passio</em> (đam mê, cảm xúc bùng lên) làm giảm tính tự nguyện, nên <strong>nhẹ hơn</strong> và <strong>dễ chữa hơn</strong> — phương thuốc chính, như Grêgôriô nói, là <strong>tránh các dịp</strong> (<em class="lat">occasiones peccati</em> — dịp tội). Tội do <em class="lat">malitia</em> (ác ý có cân nhắc, <em class="lat">ex certa scientia et deliberato consensu</em> — với ý thức rõ và ưng thuận có suy tính) nặng hơn vì <strong>ý chí đã chai</strong>, cần “phương dược sâu hơn cho tận căn.” Cái đẹp của loại suy ở đây: <em>branch protection</em>, <em>rate limit</em>, <em>required review</em> — toàn bộ triết lý guardrail kỹ thuật chính là hiện thân của nguyên tắc tu đức cổ xưa <strong>“tránh dịp tội”</strong>: người khôn không tin vào ý chí mệt mỏi lúc 2 giờ sáng, mà dựng hàng rào <strong>trước</strong>, khi còn tỉnh táo. Đó là <em class="lat">agere contra</em> (hành động ngược lại) của I-Nhã ở tầng hệ thống. Ranh giới: giảm nhẹ trách nhiệm do cảm xúc là về <strong>tòa trong</strong> (mức tội chủ quan trước Chúa) — trong team, vẫn có trách nhiệm khách quan về hậu quả cần xử; hai tòa khác nhau.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Tôi có đang để những “dịp” biết trước — sự mệt, cơn nóng giờ khuya — một mình đối diện ý chí yếu của tôi, thay vì dựng hàng rào từ khi còn tỉnh?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c34">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 34</span>
+          <h3 class="pair-title">Người phạm lỗi nhỏ nhưng thường xuyên, và người giữ điều nhỏ nhưng thỉnh thoảng sụp đổ lớn</h3>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Lỗi nhỏ thường xuyên: <em>“Ai khinh thường điều nhỏ sẽ sa sút dần dần”</em> (Hc 19,1) — giọt nước mòn đá; tội nhỏ tích lũy có khi nguy hiểm hơn vì không ai đề phòng chúng. Người giữ kỹ điều nhỏ mà thỉnh thoảng ngã nặng: sự đúng mực thường nhật có thể nuôi tự mãn — và cú sụp lớn ấp trứng trong niềm kiêu hãnh của chuỗi ngày hoàn hảo.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Đây là thần học giáo phụ của <strong>normalization of deviance</strong> (sự bình thường hóa lệch chuẩn): test bị skip “tạm thời”, config drift, commit message ẩu — tàu Challenger nổ vì những điều “nhỏ” được khinh thường lâu ngày. Và chiều ngược: kỹ sư tỉ mỉ nhất team một ngày làm shortcut thảm họa — vì chuỗi thành tích đã tắt còi báo động nội tâm. Cả hai vế đều cần anh: vế một cần kỷ luật với điều nhỏ, vế hai cần khiêm nhường giữa chuỗi ngày tốt.</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Lỗi nhỏ thường xuyên — test bị skip “tạm thời,” config drift, commit message ẩu → đây là thần học giáo phụ của <strong>normalization of deviance</strong> (bình thường hóa lệch chuẩn): <em>“Ai khinh điều nhỏ sẽ sa sút dần dần”</em> (Hc 19,1); tàu Challenger nổ vì những điều “nhỏ” được khinh thường lâu ngày. Chiều ngược: kỹ sư tỉ mỉ nhất team một ngày làm shortcut thảm họa — vì <strong>chuỗi thành tích đã tắt còi báo động nội tâm</strong>.</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô nắm cả hai đầu của một nghịch lý. Vế một: tội nhỏ tích lũy <strong>nguy hơn</strong> tội lớn ở chỗ <strong>không ai đề phòng chúng</strong> — giọt nước mòn đá, và linh hồn quen với lệch chuẩn nhỏ dần mất khả năng thấy nó lệch. Đây là điều truyền thống gọi <em class="lat">peccata levia</em> (tội nhẹ) không giết chết sự sống ân sủng ngay như <em class="lat">peccatum mortale</em> (tội trọng), nhưng <strong>làm nguội dần</strong> đức mến và dọn đường cho sa ngã lớn. Vế hai tinh vi hơn: <strong>sự đúng mực thường nhật có thể nuôi tự mãn</strong>, và “cú sụp lớn ấp trứng trong niềm kiêu hãnh của chuỗi ngày hoàn hảo” — chính chuỗi thành tích tắt còi báo động, đúng như 1 Cr 10,12. Cả hai vế gặp nhau ở một điểm: <strong>kẻ thù không phải sai lầm lớn bất ngờ, mà là sự mất cảnh giác</strong> — dù do quen lệch chuẩn hay do quen hoàn hảo. Ranh giới: đừng biến điều này thành <em class="lat">scrupulositas</em> soi mói từng lỗi vi mô đến tê liệt — mục tiêu là cảnh giác <strong>trong bình an</strong>, không phải lo âu.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Có “lệch chuẩn nhỏ” nào tôi đã quen đến mức không còn thấy nó lệch — hay tôi đang để một chuỗi ngày tốt ru ngủ sự cảnh giác của mình?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c35">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 35</span>
+          <h3 class="pair-title">Người không khởi sự điều tốt, và người khởi sự mà không hoàn thành</h3>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Người không bắt đầu: cây không sinh trái tự kết án mình bằng sự cằn cỗi. Người bắt đầu mà bỏ dở: <em>“Ai đã tra tay cầm cày mà còn ngoái lại đàng sau thì không thích hợp với Nước Thiên Chúa”</em> (Lc 9,62) — chỉ <em class="lat">perseverantia</em> (sự bền chí) mới đội triều thiên cho việc đã khởi sự.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Người không bao giờ chủ động → giao bước nhỏ đầu tiên có thời hạn, vì khởi sự là cơ bắp cần tập. Người bỏ dở hàng loạt → nghĩa địa các migration dang dở tệ hơn ít dự án hoàn thành: mỗi hệ thống nửa cũ nửa mới là một khoản lãi kép. WIP limit (giới hạn việc đang làm) là <em class="lat">ascesis</em> (khổ chế) của kanban — và việc viết documentation đến cùng chính là <em class="lat">perseverantia</em> chống lại <em class="lat">acedia</em> (sự chán chường thiêng liêng).</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Người không bao giờ chủ động → giao <strong>bước nhỏ đầu tiên có thời hạn</strong>, vì khởi sự là cơ bắp cần tập; cây không sinh trái tự kết án mình bằng sự cằn cỗi. Người bỏ dở hàng loạt → nghĩa địa các migration dang dở <strong>tệ hơn</strong> ít dự án hoàn thành: mỗi hệ thống nửa-cũ-nửa-mới là một khoản <strong>lãi kép</strong> phải trả mãi. <em>WIP limit</em> (giới hạn việc đang làm) là <em class="lat">ascesis</em> (khổ chế) của kanban; và viết documentation <strong>đến cùng</strong> chính là <em class="lat">perseverantia</em> (sự bền chí) chống lại <em class="lat">acedia</em> (chán chừng thiêng liêng).</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Đây là cặp gần nhất với chủ đề anh vẫn đồng hành. Người không khởi sự kẹt ở chính chỗ anh biết rõ: suy nghĩ không bao giờ đạt tới <em class="lat">praeceptum</em> (mệnh lệnh của ý chí — hành vi điều khiển biến quyết định thành hành động), vòng vo trong <em class="lat">evagatio mentis</em> (sự lang thang của tâm trí). Người bỏ dở thiếu <em class="lat">perseverantia</em> (bền chí) — mà Grêgôriô chốt bằng Lc 9,62: <em>“Ai tra tay cầm cày mà còn ngoái lại thì không thích hợp với Nước Thiên Chúa”</em> — vì <strong>chỉ sự bền chí mới đội triều thiên cho việc đã khởi sự</strong> (x. Mt 24,13: ai bền chí đến cùng sẽ được cứu). <em class="lat">Acedia</em> (mối “quỷ giữa trưa” của Cassian) tấn công đúng khoảng giữa: khi hào hứng ban đầu đã tắt mà đích còn xa — đó là nơi migration bị bỏ, doc viết dở, và cầu nguyện thành nguội. Vũ khí truyền thống chống acedia là <em class="lat">stabilitas</em> (sự bền vững) của Biển Đức và <em class="lat">manere in cella</em> (ở lại trong phòng, không bỏ chạy): với anh, là ở lại với <strong>cái đang dở</strong> cho đến khi xong. Ranh giới: bền chí là nhân đức, nhưng phân định <strong>việc nào đáng bền chí</strong> cần <em class="lat">prudentia</em> — không phải mọi thứ dang dở đều đáng hoàn thành; đôi khi bỏ đúng lúc là khôn ngoan, không phải acedia. Phân biệt hai điều là <em class="lat">discretio</em>.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Hôm nay tôi đang trốn ở đâu — chưa dám tra tay cầm cày, hay đã cầm mà đang ngoái lại?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pair" id="c36">
+        <div class="pair-head">
+          <span class="pair-num">Cặp 36</span>
+          <h3 class="pair-title">Người làm điều xấu kín đáo mà phô điều tốt, và người giấu điều tốt mà chịu tiếng xấu</h3>
+        </div>
+        <div class="pair-body">
+          <div class="layer layer-greg">
+            <div class="layer-label"><span class="bar"></span>Grêgôriô khuyên</div>
+            <p>Loại thứ nhất: giả hình — phần thưởng hư danh đã được lãnh đủ ở đời này (x. Mt 6,2), và Đấng thấu suốt nơi kín ẩn sẽ xét điều che giấu. Loại thứ hai tinh tế hơn: người giấu hết điều tốt và mặc cho người ta nghĩ xấu về mình — gương sáng của anh em <strong>thuộc về người khác</strong>: <em>“Ánh sáng của anh em phải chiếu giãi trước mặt thiên hạ, để họ thấy những công việc tốt đẹp anh em làm mà tôn vinh Cha của anh em”</em> (Mt 5,16). Giấu trọn điều tốt là tước đi của cộng đoàn tấm gương họ cần.</p>
+          </div>
+          <div class="layer layer-team">
+            <div class="layer-label"><span class="bar"></span>Trong team</div>
+            <p>Persona công khai bóng bẩy nhưng cẩu thả nơi không ai review → integrity là cùng một chuẩn khi camera tắt. Người giỏi mà giấu hết đóng góp, không cải chính hiểu lầm về mình, từ chối mọi sự ghi nhận → team cần những mẫu gương hữu hình; <strong>sự hữu hình của việc tốt không phải hư danh khi nó dạy người khác</strong> — bí quyết là Mt 5,16 (để người ta tôn vinh Cha / nâng team lên) chứ không phải Mt 6,2 (để người ta vỗ tay cho mình).</p>
+          </div>
+          <div class="layer layer-eg">
+            <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+            <p>Persona công khai bóng bẩy — demo hoành tráng, self-promo khéo — nhưng cẩu thả nơi không ai review, test bỏ trống, doc để trống → <em>integrity</em> là <strong>cùng một chuẩn khi camera tắt</strong>; giả hình đã lãnh đủ phần thưởng hư danh ở đời này (x. Mt 6,2). Người giỏi mà giấu hết đóng góp, không cải chính hiểu lầm về mình, từ chối mọi ghi nhận → team <strong>cần những mẫu gương hữu hình</strong>; sự hữu hình của việc tốt <strong>không phải hư danh khi nó dạy người khác</strong> (Mt 5,16) — bí quyết là để người ta <strong>tôn vinh Cha</strong> / nâng team lên, chứ không để người ta vỗ tay cho mình.</p>
+          </div>
+          <div class="layer layer-suy">
+            <div class="layer-label"><span class="bar"></span>Suy tư</div>
+            <p>Grêgôriô đặt cạnh nhau hai lỗi đối xứng qua một trục tinh tế nhất của đời thiêng liêng — <strong>tương quan giữa việc tốt và cái nhìn của người khác</strong>. Loại thứ nhất, giả hình (<em class="lat">hypocrisis</em>), phô cái không có và giấu cái xấu thật: Đấng “thấu suốt nơi kín ẩn” (Mt 6,4) sẽ xét điều che giấu, và phần thưởng hư danh đã lãnh đủ. Loại thứ hai tinh vi hơn nhiều: người giấu <strong>hết</strong> điều tốt, mặc cho người ta nghĩ xấu về mình — tưởng là khiêm nhường, nhưng thật ra <strong>tước đi của cộng đoàn tấm gương họ cần</strong>. Vì gương sáng của tôi <strong>không thuộc về tôi</strong> — nó thuộc về người khác và về Chúa: Mt 5,16 (<em>“ánh sáng của anh em phải chiếu giãi… để họ… tôn vinh Cha”</em>) đối trọng chính xác với Mt 6,2 (đừng thổi kèn khi bố thí). Toàn bộ nghệ thuật là <em class="lat">intentio</em> (ý hướng): cùng một việc tốt hữu hình, hướng về vinh danh Chúa và ích chung thì thánh, hướng về vỗ tay cho mình thì hỏng — <em class="lat">finis operantis</em> (mục đích của người làm) định phẩm chất hành vi. Đây là chỗ đẹp để khép 36 cặp: nó dẫn thẳng vào Phụ Lục B — sau mọi việc tốt, quay về hỏi lòng mình phục vụ ai.</p>
+          </div>
+          <div class="examen">
+            <span class="ex-mark">✠</span>
+            <span class="ex-body">
+              <span class="ex-label">Xét mình</span>
+              <p>Điều tốt tôi đang <strong>phô ra</strong> — tôi phô để nâng team và tôn vinh Chúa (Mt 5,16), hay để thu tràng pháo tay cho mình (Mt 6,2)? Và điều tốt tôi đang <strong>giấu đi</strong> — tôi giấu vì khiêm nhường thật, hay tôi đang giữ lại một tấm gương mà team có quyền được thấy?</p>
+            </span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <div class="ornament"><span class="line"></span>✠<span class="line"></span></div>
+
+  <!-- ============ APPENDIX A ============ -->
+  <section id="appa">
+    <h2 class="part"><span class="partnum">Phụ lục A</span>BA NGUYÊN TẮC KHÉP QUYỂN III</h2>
+    <p class="part-note">Sau 36 cặp, Grêgôriô thêm các chương khép lại — chính là phần khó nhất của nghề lãnh đạo.</p>
+
+    <div class="appendix" id="app-a1">
+      <span class="code">A.1 · Nói với đám đông pha trộn</span>
+      <h3>Nghệ thuật dao khéo</h3>
+      <p>Khi cử tọa chứa các nết đối nghịch nhau, lời khuyên phải được rèn như lưỡi dao khéo: chữa người này mà không nuôi bệnh người kia. Nghệ thuật là nói nguyên tắc sao cho mỗi loại người tự nghe thấy phần thuốc của mình.</p>
+      <p class="arrow"><em>All-hands, retro, thông báo chung:</em> lường trước cùng một câu “cần tăng tốc độ” sẽ rung khác nhau trên từng dây đàn — người hấp tấp nghe thành giấy phép, người cẩn trọng nghe thành lời kết án. Viết thông điệp với cả hai cực trong đầu và điều kiện hóa tường minh: “nhanh hơn ở X, không phải bằng cách hy sinh Y.”</p>
+      <div class="layer layer-eg" style="margin-top:18px">
+        <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+        <p>Một câu duy nhất trong all-hands — <em>“quý này chúng ta cần tăng tốc độ giao hàng.”</em> Trên dây đàn người hấp tấp, nó ngân thành <strong>giấy phép</strong> bỏ qua test; trên dây người cẩn trọng, nó ngân thành <strong>lời kết án</strong> rằng sự kỹ lưỡng của họ là vật cản. Cùng một lực gảy, hai dây rung ngược. Cách rèn lưỡi dao: điều kiện hóa tường minh — <em>“nhanh hơn ở khâu X (giảm thời gian review chờ đợi), không phải bằng cách hy sinh Y (bỏ qua kiểm thử).”</em></p>
+      </div>
+      <div class="layer layer-suy" style="margin-top:14px">
+        <div class="layer-label"><span class="bar"></span>Suy tư</div>
+        <p>Đây là đỉnh khó của nghề nói-với-nhiều-người, và Grêgôriô coi nó là một nghệ thuật riêng: nói nguyên tắc sao cho <strong>mỗi loại người tự nghe thấy phần thuốc của mình</strong>. Nền tảng là hình ảnh <em class="lat">cithara</em> (đàn dây) mở đầu Quyển III — một thông điệp gửi cho đám đông pha trộn không thể là “một lực gảy duy nhất.” Về mặt tu đức, đây là <em class="lat">discretio</em> (đức phân định) ở cấp cộng đoàn: biết trước lời mình sẽ rơi khác nhau vào những thể trạng khác nhau, và rèn nó với <strong>cả hai cực trong đầu</strong>. Ranh giới: đây là khôn ngoan mục vụ/truyền thông, <strong>không phải thao túng</strong> — khác biệt nằm ở chỗ tôi phục vụ <strong>sự trưởng thành thật</strong> của mọi người nghe, không phải điều khiển họ về phía tôi muốn.</p>
+      </div>
+      <div class="examen">
+        <span class="ex-mark">✠</span>
+        <span class="ex-body">
+          <span class="ex-label">Xét mình</span>
+          <p>Thông điệp chung gần nhất của tôi, tôi có lường trước nó rung khác nhau trên từng người — hay tôi chỉ nói điều tôi muốn nói và để mỗi người tự xoay?</p>
+        </span>
+      </div>
+    </div>
+
+    <div class="appendix" id="app-a2">
+      <span class="code">A.2 · Người đa diện &amp; hoãn lỗi nhẹ để trị lỗi nặng</span>
+      <h3>Đừng mổ hai chỗ cùng lúc</h3>
+      <p>Có người vừa hấp tấp ở mặt này vừa nhát đảm ở mặt kia; và có khi phải tạm để yên lỗi nhẹ để cắt được lỗi nặng — như thầy thuốc không mổ hai chỗ cùng lúc trên một cơ thể yếu.</p>
+      <p class="arrow"><em>1:1 và performance review:</em> đừng dump mười góp ý trong một buổi. Chọn <strong>một</strong> điều quan trọng nhất quý này; feedback overload (quá tải góp ý) là cách chắc chắn nhất để không gì thay đổi cả.</p>
+      <div class="layer layer-eg" style="margin-top:18px">
+        <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+        <p>Một kỹ sư vừa <strong>hấp tấp</strong> ở khâu ship (đẩy nhanh, ẩu) vừa <strong>nhát đảm</strong> ở khâu nói (không dám nêu ý trong họp). Chữa cả hai cùng lúc bằng cùng một giọng sẽ hỏng cả hai. Và trong performance review: đừng dump mười góp ý một buổi — chọn <strong>một</strong> điều quan trọng nhất quý này; <em>feedback overload</em> (quá tải góp ý) là cách chắc chắn nhất để <strong>không gì thay đổi cả</strong>. Như thầy thuốc không mổ hai chỗ cùng lúc trên một cơ thể yếu.</p>
+      </div>
+      <div class="layer layer-suy" style="margin-top:14px">
+        <div class="layer-label"><span class="bar"></span>Suy tư</div>
+        <p>Grêgôriô ở đây thực tế đến mức khiêm nhường: có khi phải <strong>tạm để yên lỗi nhẹ để cắt được lỗi nặng</strong> — không phải vì lỗi nhẹ không quan trọng, mà vì sức chịu đựng của người trước mặt có hạn, và chữa quá nhiều cùng lúc là không chữa gì. Đây là <em class="lat">ordo</em> (trật tự) của tình yêu áp vào việc sửa dạy: yêu thì chữa theo thứ tự người kia <strong>kham được</strong>, không theo danh sách đầy đủ của tôi. Nó cũng là bài học chống <em class="lat">scrupulositas</em> (bối rối lương tâm thái quá) trong vai người sửa: không phải mọi điều sai đều phải nói ra ngay — <em class="lat">prudentia</em> chọn thời điểm và liều lượng. Ranh giới: “hoãn” lỗi nhẹ là chiến thuật mục vụ, không phải nhắm mắt làm ngơ vĩnh viễn — điều hoãn vẫn được ghi nhớ để chữa đúng lúc.</p>
+      </div>
+      <div class="examen">
+        <span class="ex-mark">✠</span>
+        <span class="ex-body">
+          <span class="ex-label">Xét mình</span>
+          <p>Trong buổi feedback gần nhất, tôi có đang cố chữa mười thứ và vì thế chẳng chữa được gì — thay vì chọn một điều người kia thật sự kham nổi lúc này?</p>
+        </span>
+      </div>
+    </div>
+
+    <div class="appendix" id="app-a3">
+      <span class="code">A.3 · Đừng giảng điều cao sâu cho tâm trí còn non</span>
+      <h3>Sữa trước, thức ăn đặc sau</h3>
+      <p>Sữa trước, thức ăn đặc sau (x. 1 Cr 3,2) — chân lý đổ quá liều cũng gây hại như sai lầm.</p>
+      <p class="arrow"><em>Onboarding và mentoring:</em> kiến trúc tổng thể trước, edge case sau; đừng dạy internals của Kubernetes cho người chưa vững khái niệm container. Scaffold (giàn giáo) việc học là đức ái sư phạm.</p>
+      <div class="layer layer-eg" style="margin-top:18px">
+        <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+        <p>Onboarding một người mới: đừng dạy internals của Kubernetes <em>scheduler</em> và <em>etcd consensus</em> cho người chưa vững khái niệm container. Sữa trước, thức ăn đặc sau (1 Cr 3,2): kiến trúc tổng thể trước, edge case sau; một sơ đồ chạy được trước một whitepaper. <em>Scaffold</em> (giàn giáo) việc học là <strong>đức ái sư phạm</strong>, không phải hạ thấp chuẩn.</p>
+      </div>
+      <div class="layer layer-suy" style="margin-top:14px">
+        <div class="layer-label"><span class="bar"></span>Suy tư</div>
+        <p>Thánh Phaolô cho Grêgôriô hình ảnh: <em class="lat">lac vobis potum dedi, non escam</em> (tôi cho anh em uống sữa, chưa cho ăn thức ăn đặc — 1 Cr 3,2), vì họ chưa kham nổi. Nguyên tắc: <strong>chân lý đổ quá liều cũng gây hại như sai lầm</strong> — không phải vì chân lý sai, mà vì cái bình chưa đủ lớn để chứa. Đây là <em class="lat">condescensio</em> (hạ mình xuống ngang tầm) mà chính Thiên Chúa thực hiện trong Mặc Khải tiệm tiến và trong Nhập Thể: Ngài dạy loài người “từng chút một,” theo sức chịu của từng thời (x. cách <em>Dei Verbum</em> mô tả sư phạm của Thiên Chúa trong lịch sử cứu độ). Ranh giới: <em>scaffold</em> không phải giữ người ta mãi ở mức sữa — mục tiêu là <strong>dẫn tới thức ăn đặc</strong>; giữ ai đó non mãi vì sợ họ vượt mình là một nết xấu khác (x. Cặp 11).</p>
+      </div>
+      <div class="examen">
+        <span class="ex-mark">✠</span>
+        <span class="ex-body">
+          <span class="ex-label">Xét mình</span>
+          <p>Tôi có đang đổ “thức ăn đặc” lên người chưa sẵn — hay ngược lại, giữ ai đó ở mức “sữa” lâu hơn cần thiết?</p>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ APPENDIX B ============ -->
+  <section id="appb">
+    <h2 class="part"><span class="partnum">Phụ lục B</span>CHỐT AN TOÀN QUYỂN IV</h2>
+    <div class="howto">
+      <p class="dropcap">Toàn bộ runbook này vô hiệu — thậm chí độc hại — nếu thiếu vòng khép của Quyển IV: sau khi đã dẫn dắt người khác thành công, <strong>trở về xét chính mình</strong>, kẻo chính việc tốt trở thành thức ăn cho kiêu ngạo — nâng người khác lên mà mình rơi xuống.</p>
+      <p>Grêgôriô kết thúc cả tác phẩm bằng lời tự thú: <em>“pulchrum depinxi hominem pictor foedus”</em> — “tôi, một họa sĩ xấu xí, đã vẽ nên một con người đẹp đẽ” — rồi xin người nhận sách nâng đỡ ngài bằng tấm ván cầu nguyện giữa cơn đắm tàu của đời ngài.</p>
+      <h3>Thực hành đề nghị <span style="font-size:14px;color:var(--ink-soft);font-style:italic">(gắn vào Regula Parva)</span></h3>
+      <p>Mỗi tối thứ Sáu, một dòng duy nhất — <em>“Tuần này, việc tốt nào trong vai trò dẫn dắt đang âm thầm nuôi kiêu ngạo trong tôi?”</em></p>
+
+      <div class="layer layer-eg" style="margin-top:18px">
+        <div class="layer-label"><span class="bar"></span>Ví dụ</div>
+        <p>Sau một quý làm lead xuất sắc — team ship đúng hạn, mentee tiến bộ, incident giảm, sếp khen trong all-hands. Đúng đỉnh của việc-tốt-thành-công đó, Grêgôriô cài chốt an toàn: quay về hỏi <strong>“chính việc tốt này đang nuôi gì trong tôi?”</strong> Bởi cám dỗ nguy nhất của người lãnh đạo không đến lúc thất bại — thất bại làm ta khiêm xuống. Nó đến đúng lúc <strong>thành công</strong>, khi ta nâng người khác lên mà lặng lẽ rơi xuống trong lòng vì <em class="lat">vana gloria</em> (hư danh).</p>
+      </div>
+      <div class="layer layer-suy" style="margin-top:14px">
+        <div class="layer-label"><span class="bar"></span>Suy tư</div>
+        <p>Grêgôriô kết cả tác phẩm bằng một lời tự thú đẹp đến nao lòng — ngài gọi mình là <em class="lat">pictor foedus</em> (họa sĩ xấu xí) đã vẽ nên một con người đẹp đẽ mình chưa sống trọn, rồi xin người đọc nâng đỡ ngài bằng “tấm ván cầu nguyện” (<em class="lat">tabula orationis</em>) giữa cơn đắm tàu của đời ngài. Đây là toàn bộ thần học về lãnh đạo Kitô giáo cô đọng: người dạy đứng <strong>dưới</strong> điều mình dạy, không trên. <em class="lat">Vana gloria</em> (hư danh) — mà Cassian và Grêgôriô đều xếp gần cuối tám mối vì nó tinh vi nhất: nó <strong>ăn chính các nhân đức</strong>, biến việc tốt thành nhiên liệu cho cái tôi. Chốt an toàn Quyển IV không phải phần phụ — nó là điều khiến toàn bộ Quyển III <strong>không</strong> trở thành sổ tay thao túng: kỹ thuật lời nói tách khỏi sự trở-về-xét-mình là <em class="lat">astutia</em> (khôn lỏi), không phải <em class="lat">prudentia</em> (khôn ngoan). Ranh giới thẩm quyền: đây là <em class="lat">sapientia pastoralis</em> của một Tiến sĩ Hội Thánh, mời gọi chứ không buộc lương tâm; nhưng nguyên tắc nền — khiêm nhường là điều kiện của lãnh đạo lành mạnh — vọng lại chính Tin Mừng (Mc 10,43-44: ai muốn làm lớn phải làm người phục vụ).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLOSING ============ -->
+  <section class="closing" id="end">
+    <h2 class="part"><span class="partnum">Kết</span>LECTIO · XÉT MÌNH · LỜI NGUYỆN</h2>
+
+    <div class="lectio-grid">
+      <div>
+        <h4>Lectio Divina</h4>
+        <p><strong>1 Tx 5,14</strong> — <em>“Hãy khuyên bảo người vô kỷ luật, khích lệ kẻ nhút nhát, nâng đỡ người yếu đuối, và kiên nhẫn với hết mọi người.”</em> Bốn loại người, bốn động từ khác nhau, một đức ái — toàn bộ Quyển III trong một câu của Thánh Phaolô.</p>
+      </div>
+      <div>
+        <h4>Xét mình</h4>
+        <p>Hôm nay tôi đã gảy mọi dây đàn bằng cùng một lực — hay đã lắng nghe đủ để biết dây nào cần dịu, dây nào cần thẳng? Và sau khi giúp được ai đó, tôi có trở về với sự thật về chính mình không?</p>
+      </div>
+      <div>
+        <h4>Lời nguyện</h4>
+        <p style="font-size:16px">Lạy Chúa Thánh Thần, Đấng ban lời đúng lúc, xin dạy con nghệ thuật của mọi nghệ thuật… <em>(xem lời nguyện trọn vẹn bên dưới)</em></p>
+      </div>
+    </div>
+
+    <div class="prayer">
+      <span class="prayer-label">✠ Lời nguyện ✠</span>
+      Lạy Chúa Thánh Thần, Đấng ban lời đúng lúc, xin dạy con nghệ thuật của mọi nghệ thuật: biết mỗi tâm hồn là một dây đàn riêng, biết nói điều người trước mặt cần nghe chứ không phải điều con muốn nói, và sau mỗi việc tốt, xin kéo con về với lòng khiêm nhường.
+      <span class="amen">Thánh Grêgôriô Cả, cầu cho chúng con. Amen.</span>
+    </div>
+
+    <p class="colophon">
+      Soạn theo <em>Regula Pastoralis</em>, Quyển III — tóm lược trung thành, áp dụng loại suy cho đời kỹ sư.
+      <span class="amdg">✠ Ad maiorem Dei gloriam — Để Thiên Chúa được vinh danh hơn ✠</span>
+    </p>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  var progress = document.getElementById('progress');
+  var tocBtn = document.getElementById('toc-btn');
+  var topBtn = document.getElementById('top-btn');
+  var panel = document.getElementById('toc-panel');
+  var overlay = document.getElementById('toc-overlay');
+  var closeBtn = panel.querySelector('.toc-close');
+  var tocLinks = panel.querySelectorAll('a');
+
+  function openTOC(){ panel.classList.add('open'); overlay.classList.add('open'); }
+  function closeTOC(){ panel.classList.remove('open'); overlay.classList.remove('open'); }
+
+  tocBtn.addEventListener('click', openTOC);
+  closeBtn.addEventListener('click', closeTOC);
+  overlay.addEventListener('click', closeTOC);
+  tocLinks.forEach(function(a){
+    a.addEventListener('click', function(){ setTimeout(closeTOC, 120); });
+  });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeTOC(); });
+
+  // reading progress + back-to-top
+  function onScroll(){
+    var h = document.documentElement;
+    var scrolled = h.scrollTop;
+    var total = h.scrollHeight - h.clientHeight;
+    var pct = total > 0 ? (scrolled / total) * 100 : 0;
+    progress.style.width = pct + '%';
+    if(scrolled > 600){ topBtn.classList.add('show'); } else { topBtn.classList.remove('show'); }
+    highlightActive();
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll, {passive:true});
+
+  topBtn.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+
+  // active TOC link based on scroll position
+  var targets = [];
+  tocLinks.forEach(function(a){
+    var id = a.getAttribute('href');
+    if(id && id.charAt(0) === '#' && id.length > 1){
+      var el = document.querySelector(id);
+      if(el) targets.push({el: el, link: a});
+    }
+  });
+  function highlightActive(){
+    var fromTop = window.scrollY + 120;
+    var current = null;
+    targets.forEach(function(t){
+      if(t.el.offsetTop <= fromTop) current = t;
+    });
+    targets.forEach(function(t){ t.link.classList.remove('active'); });
+    if(current) current.link.classList.add('active');
+  }
+
+  onScroll();
+})();
+</script>
+</body>
+</html>
